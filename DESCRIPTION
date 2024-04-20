@@ -1,0 +1,18 @@
+Package: qvirus
+Title: Quantum Computing for HIV Drug Design  
+Version: 0.0.0.9000
+Authors@R: 
+    person("Juan Pablo", "Acuña González", , "acua6307@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0009-0003-6029-6560"))
+Description: Resources, tutorials, and code snippets dedicated to exploring the intersection of quantum computing and artificial intelligence (AI) in the context of HIV drug design. With the emergence of quantum artificial intelligence (QAI) and the development of small-scale quantum computers, there's an unprecedented opportunity to revolutionize the way antiretroviral therapy design for HIV is approached. This repository serves as a platform to discuss, develop, and share insights into leveraging quantum computing techniques, particularly through the use of Qiskit and R programming, to address the challenges in designing effective inhibitors of HIV protease enzymes.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
+Suggests: 
+    knitr,
+    qsimulatR,
+    rmarkdown,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+VignetteBuilder: knitr
