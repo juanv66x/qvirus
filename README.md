@@ -30,6 +30,20 @@ library(qvirus)
 ## basic example code
 ```
 
+Creating a Hadamard gate: `H(1)`.
+
+    #> An object of class "sqgate"
+    #> Slot "bit":
+    #> [1] 1
+    #> 
+    #> Slot "M":
+    #>              [,1]          [,2]
+    #> [1,] 0.7071068+0i  0.7071068+0i
+    #> [2,] 0.7071068+0i -0.7071068+0i
+    #> 
+    #> Slot "type":
+    #> [1] "H"
+
 Applying a gate to a quantum state.
 
 ``` r
@@ -38,7 +52,3 @@ H(1)*six_state(1)[[1]]
 #>    ( 0.7071068 ) * |0> 
 #>  + ( 0.7071068 ) * |1>
 ```
-
-Visualization of quantum circuit.
-
-<img src="man/figures/README-circ-1.png" width="100%" />

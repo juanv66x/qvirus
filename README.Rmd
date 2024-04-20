@@ -38,16 +38,17 @@ library(qvirus)
 ## basic example code
 ```
 
+Creating a Hadamard gate: `H(1)`.
+
+```{r hada, echo = FALSE}
+library(qsimulatR)
+H(1)
+```
+
 Applying a gate to a quantum state.
 
 ```{r gate}
 library(qsimulatR)
 H(1)*six_state(1)[[1]]
-```
-
-Visualization of quantum circuit.
-
-```{r circ, echo = FALSE}
-(H(1)*six_state(1)[[1]]) |> plot(qubitnames = "|0>")
 ```
 
