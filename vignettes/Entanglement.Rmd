@@ -55,8 +55,10 @@ x1
 
 # Apply gates
 x1_sup <- H(1)*x1
+x1_sup
 
 x1_entangled <- CNOT(c(1,2))*(x1_sup)
+x1_entangled
 
 truth.table(CNOT, nbits = 2)
 ```
@@ -64,17 +66,10 @@ truth.table(CNOT, nbits = 2)
 - Step 2: Observing Entanglement. The probabilities of states for entangled qubits to witness the entanglement phenomenon are computed.
 
 ```{r ste2}
-qstateProbabilities <- function(x){
-  probs <- Mod(z = x@coefs)^2
-  names(probs) <- x@basis
-  return(probs)
-}
-probs_sup <- qstateProbabilities(x1_sup)
-probs_x1 <- qstateProbabilities(x1_entangled)
-
 # Print probabilities
-print(probs_sup)
-print(probs_x1)
+normalize_check(x1_sup, probs = TRUE)
+
+normalize_check(x1_entangled, probs = TRUE)
 ```
 
 - Step 3: Visualizing Entangled States. Finally, visualization of the entangled states using plotting capabilities.
@@ -120,9 +115,6 @@ Quantum entanglement of connection between particles opens up new possibilities 
 Calculating the sum of the squared magnitudes of the coefficients of the `qstate` object or its probabilities measures the normalization of the entangled state.
 
 ```{r ayb3}
-# Check normalization without probabilities
-normalize_check(Entangled)
-
 # Check normalization with probabilities
 normalize_check(Entangled, probs = TRUE)
 ```
@@ -150,16 +142,17 @@ Entangled_Drug_Protein <- CNOT(c(1, 2)) * (H(1)*Bind)
 # Perform simulation operations using entangled states
 # Measure and analyze results for drug-protein binding
 # Quantum computer allows for more accurate simulations
+Entangled_Drug_Protein
 
 # Now, let's check the normalization of the entangled state
-normalize_check(Entangled_Drug_Protein)
+normalize_check(Entangled_Drug_Protein, probs = TRUE)
 ```
 
-Qubits for Alice and Bob are entangle using the Hadamard gate and the Controlled-NOT gate. After entanglement, a measurement on Alice is performed. 
+Qubits for Alice and Bob are entangled using the Hadamard gate and the Controlled-NOT gate. After entanglement, a measurement on Alice is performed. 
 
 Entanglement can be applied in drug design simulations. Quantum states are created for a drug molecule and a protein molecule and simulations of their interactions using entangled states lead to more accurate results.
 
-The normalizatin  function ensures the entangled drug-protein state is properly normalized, which is crucial for accurate quantum simulations.
+The normalization  function ensures the entangled drug-protein state is properly normalized, which is crucial for accurate quantum simulations.
 
 Concepts behind quantum computing and its implications for drug design, particularly in the context of anti-retroviral drugs for HIV:
 
@@ -258,11 +251,78 @@ Entangled_Drug_Protein <- Rx(1, theta = angle) * Entangled_Drug_Protein
 
 # Perform simulation operations using entangled states
 # Measure and analyze results for drug-protein binding
+Entangled_Drug_Protein
 
 # Measure the entangled state
 measured_state <- measure(Entangled_Drug_Protein)
 
 # Check the normalization of the entangled state with probabilities
 normalize_check(Entangled_Drug_Protein, probs = TRUE)
+```
+
+Now we apply the second CNOT gate and compute the probabilities for both qubits, |x1> and |x2>, to be in states |0> and |1>, respectively.
+
+```{r avp3}
+# Second CNOT : CNOT(|x1x2>)
+# x1 is the control bit thus bit 2
+# x2 is the target bit thus bit 1
+res <- CNOT(c(2,1))*Entangled_Drug_Protein
+res
+probs <- normalize_check(Entangled_Drug_Protein, probs = TRUE)
+probs
+as.numeric(probs[1]+probs[2])
+# Prob(x1=|1>) => unchanged
+as.numeric(probs[3]+probs[4])
+# Prob(x2=|0>) => updated to 0.4723976 > 0.4014201 > 0.147929
+as.numeric(probs[1]+probs[3])
+# Prob(x2=|1>) => updated to 0.5276024 < 0.5985799 < 0.852071
+as.numeric(probs[2]+probs[4])
+```
+
+As before, we obtain an updated Protein_State with updated probabilities, we compute its coefficients knowing that coef = $\sqrt{prob}$.
+
+```{r avp4}
+# Updated Protein_State
+Protein_State <- qstate(nbits = 1, 
+               coefs = as.complex(c(sqrt(probs[1]+probs[3]), 
+                                    sqrt(probs[2]+probs[4]))))
+Protein_State
+
+# Thus, quantum entangled state is now
+Entangled_Drug_Protein <- qstate(2, coefs = kronecker(Drug_State@coefs, Protein_State@coefs))
+
+# Entangled Drug and Protein states
+Entangled_Drug_Protein 
+
+normalize_check(Entangled_Drug_Protein, probs = TRUE)
+```
+
+Now, let's extend on the theory of the RX gate and its potential application in the context of HIV:
+RX Gate:
+
+The RX gate is a single-qubit gate that performs a rotation around the X-axis of the Bloch sphere by an angle specified by the theta parameter. Mathematically, it is represented by the matrix:
+
+RX(θ)=(cos⁡(θ2)−isin⁡(θ2)−isin⁡(θ2)cos⁡(θ2))RX(θ)=(cos(2θ​)−isin(2θ​)​−isin(2θ​)cos(2θ​)​)
+
+The RX gate is commonly used in quantum computing for rotations in quantum states, particularly in the context of quantum simulations and quantum algorithms.
+Application in HIV:
+
+In the context of HIV research or drug design, the RX gate can be used to simulate the application of antiretroviral drugs on quantum states representing viral components or host cell interactions. For example, if we consider a quantum simulation where qubits represent specific molecular states related to HIV infection or drug-target interactions, applying an RX gate with an appropriate angle can simulate the effect of a particular antiretroviral drug on the quantum state of the system.
+
+This simulation can provide insights into how different drugs or drug combinations might interact with viral components at a quantum level, aiding in the development of more effective antiretroviral therapies or understanding drug resistance mechanisms.
+
+The flexibility of the RX gate in specifying rotation angles allows researchers to model various scenarios and investigate the quantum dynamics of drug interactions with viral components, contributing to advancements in HIV treatment strategies.
+
+Here's an R function that takes quantum states representing a drug and a protein, along with the type of entanglement (simple entanglement using H + CNOT gates or separable states using the kronecker operator + CNOT + RX gates), and performs the appropriate operations to simulate drug-protein binding in the context of HIV drug design. You can use this function by passing quantum states for the drug and protein molecules, along with the type of entanglement you want to simulate. For example:
+
+```{r avp5}
+# Define Drug and Protein states
+Drug_State <- qstate(1, coefs = as.complex(c(1, 0)))  # State |0>
+Protein_State <- qstate(1, coefs = as.complex(c(1, 0)))  # State |0>
+
+# Simulate drug-protein binding with simple entanglement (H + CNOT)
+result_simple <- simulateDrugProteinBinding(Drug_State, Protein_State, entanglement_type = "separable")
+result_simple$measured_state
+result_simple$entangled_state
 ```
 
