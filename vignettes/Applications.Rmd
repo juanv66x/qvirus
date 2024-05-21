@@ -1,6 +1,8 @@
 ---
 title: "Applications"
-output: rmarkdown::html_vignette
+output: 
+  bookdown::html_document2:
+    toc: true
 bibliography: library.bib   
 vignette: >
   %\VignetteIndexEntry{Applications}

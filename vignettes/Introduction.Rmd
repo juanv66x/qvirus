@@ -3,6 +3,7 @@ title: "Introduction"
 output: 
   bookdown::html_document2:
     toc: true
+bibliography: library.bib     
 vignette: >
   %\VignetteIndexEntry{Introduction}
   %\VignetteEngine{knitr::rmarkdown}
@@ -22,7 +23,7 @@ A quantum state of a system is represented by a column vector characterized by t
 1. The entries of a quantum state vector are complex numbers.
 2. The sum of the absolute values squared of the entries of a quantum state vector must be equal to 1.
 
-For a single qubit, the computational basis consists of two states: |0⟩ and |1⟩. These basis states are orthogonal, meaning they are independent of each other and can't be created by combining the other. To define |0⟩ with the `qsimulatR` package, the `qstate` function is available. 
+For a single qubit, the computational basis consists of two states: |0⟩ and |1⟩. These basis states are orthogonal, meaning they are independent of each other and can't be created by combining the other. To define |0⟩ with the `qsimulatR` package [@qsimulatR2023], the `qstate` function is available. 
 
 ```{r setup}
 library(qsimulatR)

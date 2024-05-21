@@ -3,6 +3,7 @@ title: "Entanglement"
 output: 
   bookdown::html_document2:
     toc: true
+bibliography: library.bib 
 vignette: >
   %\VignetteIndexEntry{Entanglement}
   %\VignetteEngine{knitr::rmarkdown}
