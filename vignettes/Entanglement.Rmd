@@ -17,29 +17,27 @@ knitr::opts_chunk$set(
 ```
 
 
-# Quantum Entanglement: Unraveling the Mysteries of Quantum Computing
-
-## Introduction
+# Introduction to Quantum Entanglement
 
 In the realm of quantum computing, the ordinary rules of classical physics no longer apply. To understand one of the most enigmatic phenomena in quantum mechanics, entanglement, an exploration of the deep connections that bind quantum particles and pave the way for revolutionary computational power is needed.
 
-## Theory of Quantum Entanglement
+# Theory of Quantum Entanglement
 
-### The Nature of Qubits and Entanglement
+## The Nature of Qubits and Entanglement
 
 In classical computing, one deals with bits that can exist in two states, 0 or 1. However, in quantum computing, the concept of qubits is introduced, which can exist in a superposition of 0 and 1 states simultaneously. Mathematically, a qubit can be represented as 𝑎|0⟩ + 𝑏|1⟩, where 𝑎 and 𝑏 are coefficients allowing for this superposition.
 
 Entanglement takes this concept further, where two qubits can become entangled in such a way that their states are deeply intertwined. This means that the state of one qubit cannot be described independently of the other, no matter the distance separating them.
 
-### Creating Entanglement: The CNOT Gate
+## Creating Entanglement: The CNOT Gate
 
 To create entanglement, quantum gates such as the CNOT gate (Controlled-NOT gate) are employed. This gate operates on two qubits, with one acting as the control and the other as the target. When applied, it entangles the two qubits, establishing a correlation between their states.
 
-### Bell States: Epitome of Entanglement
+## Bell States: Epitome of Entanglement
 
 The pinnacle of entanglement is captured in the Bell states, such as the state $\frac{1}{\sqrt{2}}$ (|00⟩ + |11⟩). These states represent maximal entanglement between two qubits, where the properties of one qubit instantaneously affect the other, regardless of distance.
 
-### Implementation: Exploring Entanglement with qsimulatR
+## Implementation: Exploring Entanglement and Simulation
 
 Diving into the practical side of entanglement starts by creating qubits and applying quantum gates to observe entanglement in action.
 
@@ -80,22 +78,205 @@ qsimulatR::plot(x1_sup, qubitnames = c("|0>"))
 qsimulatR::plot(x1_entangled, qubitnames = c("|0>"))
 ```
 
-## Harnessing Entanglement for Quantum Computing
+Tensor products of quantum state vectors are also quantum state vectors and they represent independence among systems.
+
+For example, the tensor product $|\phi> \otimes |\psi>$ may alternatively be written as $|\phi> |\psi>$ or as $|\phi \psi>$.
+
+$$
+\begin{equation}
+    |0> \otimes |1> = \begin{pmatrix} 
+     1 \\ 
+     0 \\ 
+     \end{pmatrix} \otimes \begin{pmatrix} 
+     0 \\ 
+     1 \\ 
+     \end{pmatrix} = \begin{pmatrix} 
+     0 \\ 
+     1 \\ 
+     0 \\
+     0 
+     \end{pmatrix} = |01>  
+    (\#eq:ste4)
+\end{equation}
+$$
+The same result for the tensor product between quantum state vectors of Equation \@ref(eq:ste4) is obtained when working with `qstate` objects.
+
+```{r ste4}
+a <- qstate(1) # |0>
+b <- X(1)*a    # |1>
+kronecker(a@coefs, b@coefs)
+ab <- qstate(2, coefs = kronecker(a@coefs, b@coefs))
+ab
+```
+
+To get a detailed computational sense of what entanglement means is obtained by simulating a specific 2-qubit example, as in Equation \@ref(eq:ste5).
+
+$$
+\begin{equation}
+    |x1> = \begin{pmatrix} 
+     0.8 \\ 
+     0.6 \\ 
+     \end{pmatrix} \,\,\ |x2> = \begin{pmatrix} 
+     0.38 \\ 
+     0.92 \\ 
+     \end{pmatrix}  
+    (\#eq:ste5)
+\end{equation}
+$$
+After applying the first CNOT, Equation \@ref(eq:ste6) is obtained.
+
+$$
+\begin{equation}
+    |x1> = \begin{pmatrix} 
+     0.8 \\ 
+     0.6 \\ 
+     \end{pmatrix} \,\,\ |x2> = \begin{pmatrix} 
+     0.63 \\ 
+     0.77 \\ 
+     \end{pmatrix}  
+    (\#eq:ste6)
+\end{equation}
+$$
+After applying the second CNOT gate, Equationo \@ref(eq:ste7) is obtained.
+
+$$
+\begin{equation}
+    |x1> = \begin{pmatrix} 
+     0.8 \\ 
+     0.6 \\ 
+     \end{pmatrix} \,\,\ |x2> = \begin{pmatrix} 
+     0.683 \\ 
+     0.721 \\ 
+     \end{pmatrix}  
+    (\#eq:ste7)
+\end{equation}
+$$
+
+```{r ste5, eval=FALSE, echo=FALSE}
+# qubit |x1>
+x1 <- qstate(1, coefs = as.complex(c(.8, .6)))
+x1
+normalize_check(x1, probs = TRUE)
+# qubit |x2>
+x2 <- qstate(1, coefs = as.complex(c(5/13, 12/13)))
+x2
+normalize_check(x2, probs = TRUE)
+```
+
+
+
+```{r ste6, eval=FALSE, echo=FALSE}
+# quantum state |x1x2>
+x1x2 <- qstate(2, coefs = as.complex(kronecker(x1@coefs, x2@coefs)))
+x1x2
+```
+
+
+```{r ste7, eval=FALSE, echo=FALSE}
+# First CNOT : CNOT(|x1x2>)
+# x1 is the control bit thus bit 2
+# x2 is the target bit thus bit 1
+res <- CNOT(c(2,1))*x1x2
+res
+probs <- normalize_check(res, probs = TRUE)
+probs
+# Prob(x1=|0>) => unchanged
+as.numeric(probs[1]+probs[2])
+# Prob(x1=|1>) => unchanged
+as.numeric(probs[3]+probs[4])
+# Prob(x2=|0>) => updated to 0.4014201 > 0.147929
+as.numeric(probs[1]+probs[3])
+# Prob(x2=|1>) => updated to 0.5985799 < 0.852071
+as.numeric(probs[2]+probs[4])
+```
+
+
+
+```{r ste8, eval=FALSE, echo=FALSE}
+# Updated |x2>
+x2 <- qstate(nbits = 1, 
+               coefs = as.complex(c(sqrt(probs[1]+probs[3]), 
+                                    sqrt(probs[2]+probs[4]))))
+x2
+# Thus, quantum state |x1x2> is now
+x1x2 <- qstate(2, coefs = as.complex(kronecker(x1@coefs, x2@coefs)))
+x1x2
+```
+
+
+
+```{r ste9, eval=FALSE, echo=FALSE}
+# Second CNOT : CNOT(|x1x2>)
+# x1 is the control bit thus bit 2
+# x2 is the target bit thus bit 1
+res <- CNOT(c(2,1))*x1x2
+res
+probs <- normalize_check(res, probs = TRUE)
+probs
+# Prob(x1=|0>) => unchanged
+as.numeric(probs[1]+probs[2])
+
+# Prob(x1=|1>) => unchanged
+as.numeric(probs[3]+probs[4])
+
+# Prob(x2=|0>) => updated to 0.4723976 > 0.4014201 > 0.147929
+as.numeric(probs[1]+probs[3])
+
+# Prob(x2=|1>) => updated to 0.5276024 < 0.5985799 < 0.852071
+as.numeric(probs[2]+probs[4])
+```
+
+
+
+```{r ste10, eval=FALSE, echo=FALSE}
+# updated |x2>
+x2
+```
+
+The `simulate_entanglement` function of `qvirus` simulates the application of CNOT gates for two qubits to demonstrate entanglement. 
+
+The function performs the tensor product |x1>⊗ |x2> = |x1x2> and then applies the first CNOT gate and compute the probabilities for both qubits, |x1> and |x2>, to be in states |0> and |1>, respectively.
+
+This means that an updated |x2> with updated probabilities is  obtained, where its coefficients are computed knowing that coef = $\sqrt{prob}$. Consequently, an updated quantum state |x1>⊗ |x2> = |x1x2> is obtained. Now, the second CNOT gate is applied and probabilities for both qubits comoputed, |x1> and |x2>, to be in states |0> and |1>, respectively, and as before the result is an updated |x2> with updated probabilities. 
+
+```{r ste11}
+x1 <- qstate(1, coefs = as.complex(c(0.8, 0.6)))
+x2 <- qstate(1, coefs = as.complex(c(0.38, 0.92)))
+simulate_entanglement(x1, x2, iterations = 2, angle = pi/4)
+```
+
+Thus, the probability of (|x2> = |0>) increased from 0.15 to 0.47, the probability of (|x2> = |1>) decreased from 0.85 to 0.53. The (unchanged) probability of (|x1> = |1>) = 0.36 < 0.5 thus, |x1> is closer to state |0>. This means that applying the CNOT several times, with x1 as the control bit and x2 as the target bit, will make |x2> to converge to state |0> as well, therefore entanglement.
+
+# Harnessing Entanglement for Quantum Computing
 
 Entanglement stands as a cornerstone of quantum computing, enabling vast computational power and novel applications such as quantum teleportation and cryptography. While its mysteries continue to intrigue physicists and computer scientists alike, its practical utilization marks a paradigm shift in computing capabilities.
 
-Imagine having two quantum particles, qubits, let's call them Alice and Bob. Now, in the quantum realm, Alice and Bob can become entangled. This means that the state of one qubit becomes intimately connected with the state of the other, no matter how far apart they are. It's like they're always in sync, no matter the distance that separates them.
+Considering two quantum particles, qubits, labeling them Alice and Bob. Now, in the quantum realm, Alice and Bob can become entangled. This means that the state of one qubit becomes intimately connected with the state of the other, no matter how far apart they are. It's like they're always in sync, no matter the distance that separates them.
 
-To illustrate this concept, let's create our qubits using the `qstate` objects, starting with two separate qubits for Alice and Bob:
+```{r ayb}
+# Create qubits
+AlBo <- qstate(nbits = 2)
+x1
 
-```{r ayb1}
+# Apply gates
+H_AlBo <- H(1)*AlBo
+
+Entangled <- CNOT(c(1,2))*(H_AlBo)
+# Display the entangled state
+Entangled
+
+# Check normalization with probabilities
+normalize_check(Entangled, probs = TRUE)
+```
+
+```{r ayb1, eval=FALSE, echo=FALSE}
 # Create qubit Alice in state |0>
 AlBo <- qstate(nbits = 2)
 ```
 
-Now, let's entangle Alice and Bob using the special quantum operation of the H gate and the Controlled-NOT gate (CNOT). The Hadamard gate puts a qubit into a superposition of states, and the CNOT gate creates entanglement between two qubits.
+Alice and Bob get entangled using the special quantum operation of the H gate and the Controlled-NOT gate (CNOT). The Hadamard gate puts a qubit into a superposition of states, and the CNOT gate creates entanglement between two qubits.
 
-```{r ayb2}
+```{r ayb2,  eval=FALSE, echo=FALSE}
 # Apply Hadamard gate to Alice
 H_AlBo <- H(1) * AlBo
 
@@ -108,20 +289,44 @@ Entangled
 
 Alice and Bob are entangled. When measuring one qubit, say Alice, her state instantly affects Bob's state, no matter how far apart they are.
 
-Applications of entanglement, like in drug design, revolve around the design of a new anti-retroviral drug that binds perfectly with a virus protein. This requires complex chemical simulations that are very difficult for classical supercomputers. But with quantum computers and their ability to handle entangled states, much more accurate simulations can be performed, leading to better drug designs.
-
-Quantum entanglement of connection between particles opens up new possibilities for faster and more accurate computations, making tasks like drug design much more efficient and effective.
-
 Calculating the sum of the squared magnitudes of the coefficients of the `qstate` object or its probabilities measures the normalization of the entangled state.
 
-```{r ayb3}
+```{r ayb3, eval=FALSE, echo=FALSE}
 # Check normalization with probabilities
 normalize_check(Entangled, probs = TRUE)
 ```
 
 This gives either the sum of the squared magnitudes of the coefficients or the probabilities of the entangled state, ensuring that the quantum state is properly normalized.
 
-```{r avp1}
+Qubits for Alice and Bob are entangled using the Hadamard gate and the Controlled-NOT gate. After entanglement, a measurement on Alice is performed. 
+
+Applications of entanglement, like in drug design, revolve around the design of a new anti-retro viral drug that binds perfectly with a virus protein. This requires complex chemical simulations that are very difficult for classical supercomputers. But with quantum computers and their ability to handle entangled states, much more accurate simulations can be performed, leading to better drug designs.
+
+Quantum entanglement of connection between particles opens up new possibilities for faster and more accurate computations, making tasks like drug design much more efficient and effective.
+
+```{r avp}
+# Application in drug design simulation
+# Simulate entanglement to improve accuracy
+# Quantum computer can handle complex states efficiently
+# Suppose we're simulating a drug-protein interaction
+# Here's a simplified example
+
+# Quantum representation of drug and protein states
+Bind <- qstate(nbits = 2)
+
+# Entangle Drug and Protein states
+Entangled_Drug_Protein <- CNOT(c(1, 2)) * (H(1)*Bind)
+
+# Perform simulation operations using entangled states
+# Measure and analyze results for drug-protein binding
+# Quantum computer allows for more accurate simulations
+Entangled_Drug_Protein
+
+# Now, let's check the normalization of the entangled state
+normalize_check(Entangled_Drug_Protein, probs = TRUE)
+```
+
+```{r avp1, eval=FALSE, echo=FALSE}
 # Perform a measurement on Alice
 result <- measure(Entangled)
 result
@@ -148,35 +353,33 @@ Entangled_Drug_Protein
 normalize_check(Entangled_Drug_Protein, probs = TRUE)
 ```
 
-Qubits for Alice and Bob are entangled using the Hadamard gate and the Controlled-NOT gate. After entanglement, a measurement on Alice is performed. 
-
-Entanglement can be applied in drug design simulations. Quantum states are created for a drug molecule and a protein molecule and simulations of their interactions using entangled states lead to more accurate results.
+When entanglement is applied in drug design simulation, quantum states are created for a drug molecule and a protein molecule and simulations of their interactions using entangled states lead to more accurate results.
 
 The normalization  function ensures the entangled drug-protein state is properly normalized, which is crucial for accurate quantum simulations.
 
-Concepts behind quantum computing and its implications for drug design, particularly in the context of anti-retroviral drugs for HIV:
+Some concepts behind quantum computing and its implications for drug design, particularly in the context of anti-retro viral drugs for HIV, are of importance.
 
-- Qubits and Quantum States: In quantum computing, information is stored in qubits, which are quantum counterparts of classical bits. Qubits can exist in a superposition of states, meaning they can represent both 0 and 1 simultaneously. This property is akin to Schrödinger's cat being both alive and dead until observed.
+- Qubits and Quantum States: In quantum computing, information is stored in qubits, which are quantum counterparts of classical bits. Qubits can exist in a superposition of states, meaning they can represent both 0 and 1 simultaneously. This property is akin to Schrodinger's cat being both alive and dead until observed.
 
 - Quantum Entanglement: When qubits become correlated, they form entangled states. This means the state of one qubit is directly related to the state of another, no matter how far apart they are. Entanglement is a fundamental resource for quantum computation and leads to phenomena like instantaneous changes in state upon measurement.
 
 - Quantum Interference: Quantum interference occurs when the amplitudes of different quantum states interfere with each other, leading to constructive or destructive interference. This property is essential in quantum algorithms like the Hadamard gate.
 
-- Applications in Drug Design: Quantum computing offers advantages in drug design, particularly for complex simulations required to design anti-retroviral drugs. By leveraging entangled states and superposition, quantum computers can perform more accurate simulations, leading to better drug designs.
+- Applications in Drug Design: Quantum computing offers advantages in drug design, particularly for complex simulations required to design anti-retro viral drugs. By leveraging entangled states and superposition, quantum computers can perform more accurate simulations, leading to better drug designs.
 
 - Challenges and Hybrid Approaches: Quantum simulations can be computationally intensive, so hybrid classical-quantum approaches are often used. This involves splitting the workload between classical approximations and precise quantum calculations to optimize performance.
 
 Practical applications related to HIV drug design have the goal to determine if a toy anti-retroviral molecule binds effectively with a toy virus protease. This involves using quantum chemistry algorithms to simulate the binding affinity between the molecule and the protease. The challenge includes tweaking the quantum chemistry setup for optimal performance under ideal quantum computing conditions. Quantum computing's ability to handle entangled states and superposition offers a new frontier in drug design, potentially revolutionizing the way of developing treatments for diseases like HIV.
 
-Superposition and entanglement are related concepts in quantum mechanics, but they're not the same thing. Imagine a coin that can be either heads or tails. In classical terms, the coin is in one of these states at any given time. In quantum terms, the coin can be in a superposition of both states simultaneously, like being "half heads and half tails" until observation.
+Superposition and entanglement are related concepts in quantum mechanics, but they're not the same thing. Like a coin that can be either heads or tails. In classical terms, the coin is in one of these states at any given time. In quantum terms, the coin can be in a superposition of both states simultaneously, like being "half heads and half tails" until observation.
 
-Now, thinking of two coins that are entangled. If one coin is heads, the other is guaranteed to be tails, no matter how far apart they are. 
+The two coins are entangle if, when one coin is heads, the other is guaranteed to be tails, no matter how far apart they are. 
 
 So, superposition is about a single object being in multiple states at once, while entanglement is about the relationship between multiple objects where the state of one directly affects the state of another.
 
-Superposition allows qubits to represent multiple states simultaneously, which is a powerful computational resource. Entanglement, on the other hand, enables qubits to be correlated in such a way that operations on one qubit instantly impact others, leading to faster and more efficient computations.
+Superposition allows qubits to represent multiple states simultaneously, which is a powerful computational resource. Entanglement, on the other hand, enables qubits to be correlated in such a way that operations on one qubit instantly impact others, leading to faster and more efficient computations
 
-The H gate is a fundamental quantum gate that plays a crucial role in creating superposition states, which can then lead to entanglement when combined with other gates or operations. 
+The H gate is essential for creating superposition states in individual qubits, which are then used in conjunction with other gates to generate entangled states between multiple qubits. This entanglement allows for the unique properties of quantum computing, such as simultaneous computation across correlated qubits.
 
 The H gate is often used to create superposition in a single qubit. When applying the H gate to a qubit initially in state |0⟩ (zero state), it puts the qubit into an equal superposition of |0⟩ and |1⟩, represented as in Equation \@ref(eq:hen1).
 
@@ -212,13 +415,11 @@ $$
 
 In this entangled state, the qubits are correlated. Measuring one qubit and find it in, say, state |0⟩, then instantly the other qubit is also in state |0⟩ due to their entanglement.
 
-The Hadamard gate is essential for creating superposition states in individual qubits, which are then used in conjunction with other gates to generate entangled states between multiple qubits. This entanglement allows for the unique properties of quantum computing, such as simultaneous computation across correlated qubits.
-
-In summary, to generate entangled states using the CNOT gate after applying the H gate for superposition, first the H gate to one qubit is applied to create superposition. Then the CNOT gate is applied with the qubit in superposition as the control qubit and another qubit as the target qubit.
+To generate entangled states using the CNOT gate after applying the H gate for superposition, first the H gate to one qubit is applied to create superposition. Then the CNOT gate is applied with the qubit in superposition as the control qubit and another qubit as the target qubit.
 
 Unlike in classical computing whith clear control and target roles, in quantum logic, after a CNOT operation, there's a blur. The qubits' states become intertwined. It can't be said definitively if one qubit solely controls the other because they influence each other's states.
 
-When CNOT gates are applide for entanglement, starting with two qubits, measuring probabilities shows how their states evolve. If a qubit's probability shifts, it means it's becoming more entangled with the other qubit.
+When CNOT gates are applied for entanglement, starting with two qubits, measuring probabilities shows how their states evolve. If a qubit's probability shifts, it means it's becoming more entangled with the other qubit.
 
 The last step involves checking the normalization of the entangled state using probabilities. 
 
@@ -230,13 +431,23 @@ Separable qubits are quite the opposite of entangled ones. A separable state can
 
 Combining two quantum states with the tensor product, shows their independence. For instance, |φ⟩⊗|ψ⟩ means |φ⟩ and |ψ⟩ are not meddling with each other.
 
-For instance, applying CNOT gates, it might be observed that a qubit's chance of being in state |0> increase while its chance of being in state |1> decreases. This tells how they're becoming entangled. The more CNOT gates applied, the more intertwined their states become until they're inseparable.
+Now, applying CNOT gates, it might be observed that a qubit's chance of being in state |0> increase while its chance of being in state |1> decreases. This tells how they're becoming entangled. The more CNOT gates applied, the more intertwined their states become until they're inseparable.
 
 The HIV drug-protein interaction simulation represents entangled and separable states.
 
-Defining quantum states representing the drug and protein molecules and then entangling them using the CNOT gate is a prcess to simulate their interaction. Entanglement affects the measurement results.
+Defining quantum states representing the drug and protein molecules and then entangling them using the CNOT gate is a process to simulate their interaction. Entanglement affects the measurement results.
 
-```{r avp2}
+```{r avpr}
+# Quantum representation of drug and protein states
+Drug_State <- qstate(1, coefs = as.complex(c(1, 0)))  # State |0>
+Protein_State <- qstate(1, coefs = as.complex(c(1, 0)))  # State |0>
+# Entangle Drug and Protein states
+# Perform simulation operations using entangled states
+# Measure and analyze results for drug-protein binding
+simulate_entanglement(Drug_State, Protein_State, 3, angle = pi/4)
+```
+
+```{r avp2, eval=FALSE, echo=FALSE}
 # Quantum representation of drug and protein states
 Drug_State <- qstate(1, coefs = as.complex(c(1, 0)))  # State |0>
 Protein_State <- qstate(1, coefs = as.complex(c(1, 0)))  # State |0>
@@ -260,9 +471,9 @@ measured_state <- measure(Entangled_Drug_Protein)
 normalize_check(Entangled_Drug_Protein, probs = TRUE)
 ```
 
-Now we apply the second CNOT gate and compute the probabilities for both qubits, |x1> and |x2>, to be in states |0> and |1>, respectively.
+Now, the second CNOT gate is applied and the probabilities for both qubits are obtained, |x1> and |x2>, to be in states |0> and |1>, respectively.
 
-```{r avp3}
+```{r avp3, eval=FALSE, echo=FALSE}
 # Second CNOT : CNOT(|x1x2>)
 # x1 is the control bit thus bit 2
 # x2 is the target bit thus bit 1
@@ -279,9 +490,9 @@ as.numeric(probs[1]+probs[3])
 as.numeric(probs[2]+probs[4])
 ```
 
-As before, we obtain an updated Protein_State with updated probabilities, we compute its coefficients knowing that coef = $\sqrt{prob}$.
+As before, an updated `Protein_State` with updated probabilities is formed, and its coefficients are computed knowing that coef = $\sqrt{prob}$.
 
-```{r avp4}
+```{r avp4, eval=FALSE, echo=FALSE}
 # Updated Protein_State
 Protein_State <- qstate(nbits = 1, 
                coefs = as.complex(c(sqrt(probs[1]+probs[3]), 
@@ -297,32 +508,27 @@ Entangled_Drug_Protein
 normalize_check(Entangled_Drug_Protein, probs = TRUE)
 ```
 
-Now, let's extend on the theory of the RX gate and its potential application in the context of HIV:
-RX Gate:
+The theory of the RX gate has great potential application in the context of HIV research. The function `simulate_entanglement` includes the angle parameter to specify the rotation to be applied on an Rx gate.
 
-The RX gate is a single-qubit gate that performs a rotation around the X-axis of the Bloch sphere by an angle specified by the theta parameter. Mathematically, it is represented by the matrix:
+The RX gate is a single-qubit gate that performs a rotation around the X-axis of the Bloch sphere by an angle specified by the theta parameter. Mathematically, it is represented by the matrix of Equation \@ref(eq:rxga)
 
-RX(θ)=(cos⁡(θ2)−isin⁡(θ2)−isin⁡(θ2)cos⁡(θ2))RX(θ)=(cos(2θ​)−isin(2θ​)​−isin(2θ​)cos(2θ​)​)
+$$
+\begin{equation}
+    RX(θ) = 
+    \left(
+\begin{array}{ll}
+\cos\Big (\frac{\theta}{2}\Big ) & -i \sin\Big (\frac{\theta}{2}\Big ) \\
+-i \sin\Big (\frac{\theta}{2}\Big ) & \cos\Big (\frac{\theta}{2}\Big )
+\end{array}
+\right)
+    (\#eq:rxga)
+\end{equation}
+$$
 
 The RX gate is commonly used in quantum computing for rotations in quantum states, particularly in the context of quantum simulations and quantum algorithms.
-Application in HIV:
 
-In the context of HIV research or drug design, the RX gate can be used to simulate the application of antiretroviral drugs on quantum states representing viral components or host cell interactions. For example, if we consider a quantum simulation where qubits represent specific molecular states related to HIV infection or drug-target interactions, applying an RX gate with an appropriate angle can simulate the effect of a particular antiretroviral drug on the quantum state of the system.
+In the context of HIV research or drug design, the RX gate can be used to simulate the application of antiretroviral drugs on quantum states representing viral components or host cell interactions. For example, if a quantum simulation where qubits represent specific molecular states related to HIV infection or drug-target interactions is considered, applying an RX gate with an appropriate angle can simulate the effect of a particular antiretroviral drug on the quantum state of the system.
 
 This simulation can provide insights into how different drugs or drug combinations might interact with viral components at a quantum level, aiding in the development of more effective antiretroviral therapies or understanding drug resistance mechanisms.
 
 The flexibility of the RX gate in specifying rotation angles allows researchers to model various scenarios and investigate the quantum dynamics of drug interactions with viral components, contributing to advancements in HIV treatment strategies.
-
-Here's an R function that takes quantum states representing a drug and a protein, along with the type of entanglement (simple entanglement using H + CNOT gates or separable states using the kronecker operator + CNOT + RX gates), and performs the appropriate operations to simulate drug-protein binding in the context of HIV drug design. You can use this function by passing quantum states for the drug and protein molecules, along with the type of entanglement you want to simulate. For example:
-
-```{r avp5}
-# Define Drug and Protein states
-Drug_State <- qstate(1, coefs = as.complex(c(1, 0)))  # State |0>
-Protein_State <- qstate(1, coefs = as.complex(c(1, 0)))  # State |0>
-
-# Simulate drug-protein binding with simple entanglement (H + CNOT)
-result_simple <- simulateDrugProteinBinding(Drug_State, Protein_State, entanglement_type = "separable")
-result_simple$measured_state
-result_simple$entangled_state
-```
-
