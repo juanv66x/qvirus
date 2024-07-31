@@ -26,7 +26,7 @@ In the realm of quantum computing, the ordinary rules of classical physics no lo
 
 ## The Nature of Qubits and Entanglement
 
-In classical computing, one deals with bits that can exist in two states, 0 or 1. However, in quantum computing, the concept of qubits is introduced, which can exist in a superposition of 0 and 1 states simultaneously. Mathematically, a qubit can be represented as 𝑎|0⟩ + 𝑏|1⟩, where 𝑎 and 𝑏 are coefficients allowing for this superposition.
+In classical computing, one deals with bits that can exist in two states, 0 or 1. However, in quantum computing, the concept of qubits is introduced, which can exist in a superposition of 0 and 1 states simultaneously. Mathematically, a qubit can be represented as $a|0⟩ + b|1⟩$, where $a$ and $b$ are coefficients allowing for this superposition.
 
 Entanglement takes this concept further, where two qubits can become entangled in such a way that their states are deeply intertwined. This means that the state of one qubit cannot be described independently of the other, no matter the distance separating them.
 
@@ -36,7 +36,7 @@ To create entanglement, quantum gates such as the CNOT gate (Controlled-NOT gate
 
 ## Bell States: Epitome of Entanglement
 
-The pinnacle of entanglement is captured in the Bell states, such as the state $\frac{1}{\sqrt{2}}$ (|00⟩ + |11⟩). These states represent maximal entanglement between two qubits, where the properties of one qubit instantaneously affect the other, regardless of distance.
+The pinnacle of entanglement is captured in the Bell states, such as the state $\frac{1}{\sqrt{2}}$ ($|00⟩ + |11⟩$). These states represent maximal entanglement between two qubits, where the properties of one qubit instantaneously affect the other, regardless of distance.
 
 ## Implementation: Exploring Entanglement and Simulation
 
@@ -236,9 +236,9 @@ x2
 
 The `simulate_entanglement` function of `qvirus` simulates the application of CNOT gates for two qubits to demonstrate entanglement. 
 
-The function performs the tensor product |x1>⊗ |x2> = |x1x2> and then applies the first CNOT gate and compute the probabilities for both qubits, |x1> and |x2>, to be in states |0> and |1>, respectively.
+The function performs the tensor product $|x1> \otimes |x2> = |x1x2>$ and then applies the first CNOT gate and compute the probabilities for both qubits, $|x1>$ and $|x2>$, to be in states $|0>$ and $|1>$, respectively.
 
-This means that an updated |x2> with updated probabilities is  obtained, where its coefficients are computed knowing that coef = $\sqrt{prob}$. Consequently, an updated quantum state |x1>⊗ |x2> = |x1x2> is obtained. Now, the second CNOT gate is applied and probabilities for both qubits comoputed, |x1> and |x2>, to be in states |0> and |1>, respectively, and as before the result is an updated |x2> with updated probabilities. 
+This means that an updated $|x2>$ with updated probabilities is  obtained, where its coefficients are computed knowing that $\text{coef} = \sqrt{prob}$. Consequently, an updated quantum state $|x1> \otimes |x2> = |x1x2>$ is obtained. Now, the second CNOT gate is applied and probabilities for both qubits comoputed, $|x1>$ and $|x2>$, to be in states $|0>$ and $|1>$, respectively, and as before the result is an updated $|x2>$ with updated probabilities. 
 
 ```{r ste11}
 x1 <- qstate(1, coefs = as.complex(c(0.8, 0.6)))
@@ -246,7 +246,7 @@ x2 <- qstate(1, coefs = as.complex(c(0.38, 0.92)))
 simulate_entanglement(x1, x2, iterations = 2, angle = pi/4)
 ```
 
-Thus, the probability of (|x2> = |0>) increased from 0.15 to 0.47, the probability of (|x2> = |1>) decreased from 0.85 to 0.53. The (unchanged) probability of (|x1> = |1>) = 0.36 < 0.5 thus, |x1> is closer to state |0>. This means that applying the CNOT several times, with x1 as the control bit and x2 as the target bit, will make |x2> to converge to state |0> as well, therefore entanglement.
+Thus, the probability of ($|x2> = |0>$) increased from 0.15 to 0.47, the probability of ($|x2> = |1>$) decreased from 0.85 to 0.53. The (unchanged) probability of ($|x1> = |1>$) = 0.36 < 0.5 thus, $|x1>$ is closer to state $|0>$. This means that applying the CNOT several times, with $x1$ as the control bit and $x2$ as the target bit, will make $|x2>$ to converge to state $|0>$ as well, therefore entanglement.
 
 # Harnessing Entanglement for Quantum Computing
 
@@ -382,7 +382,7 @@ Superposition allows qubits to represent multiple states simultaneously, which i
 
 The H gate is essential for creating superposition states in individual qubits, which are then used in conjunction with other gates to generate entangled states between multiple qubits. This entanglement allows for the unique properties of quantum computing, such as simultaneous computation across correlated qubits.
 
-The H gate is often used to create superposition in a single qubit. When applying the H gate to a qubit initially in state |0⟩ (zero state), it puts the qubit into an equal superposition of |0⟩ and |1⟩, represented as in Equation \@ref(eq:hen1).
+The H gate is often used to create superposition in a single qubit. When applying the H gate to a qubit initially in state $|0⟩$ (zero state), it puts the qubit into an equal superposition of $|0⟩$ and $|1⟩$, represented as in Equation \@ref(eq:hen1).
 
 $$
 \begin{equation}
@@ -392,7 +392,7 @@ $$
 $$
 
 
-Similarly, applying the H gate to qubit initially in state |1⟩ puts it into the superposition of |0⟩ and |1⟩, like in Equation \@ref(eq:hen2)
+Similarly, applying the H gate to qubit initially in state $|1⟩$ puts it into the superposition of $|0⟩$ and $|1⟩$, like in Equation \@ref(eq:hen2)
 
 $$
 \begin{equation}
@@ -403,9 +403,9 @@ $$
 
 These superposition states are crucial for quantum computations because they allow qubits to represent multiple classical states simultaneously.
 
-Entanglement typically involves multiple qubits. For example, considering a system of two qubits initially in the state |00⟩, where both qubits are in the zero state. To create an entangled state, a series of gates that involve H gates along with other gates like CNOT gate are applied.
+Entanglement typically involves multiple qubits. For example, considering a system of two qubits initially in the state $|00⟩$, where both qubits are in the zero state. To create an entangled state, a series of gates that involve H gates along with other gates like CNOT gate are applied.
     
-For instance, applying a Hadamard gate to the qubit of Equation \@ref(eq:hen1) followed by a CNOT gate (controlled by the first qubit and targeting the second qubit) creates the Bell state |Φ+⟩, as in Equation \@ref(eq:hen3).
+For instance, applying a Hadamard gate to the qubit of Equation \@ref(eq:hen1) followed by a CNOT gate (controlled by the first qubit and targeting the second qubit) creates the Bell state $|\phi+⟩$, as in Equation \@ref(eq:hen3).
 
 $$
 \begin{equation}
@@ -414,7 +414,7 @@ $$
 \end{equation}
 $$
 
-In this entangled state, the qubits are correlated. Measuring one qubit and find it in, say, state |0⟩, then instantly the other qubit is also in state |0⟩ due to their entanglement.
+In this entangled state, the qubits are correlated. Measuring one qubit and find it in, say, state $|0⟩$, then instantly the other qubit is also in state $|0⟩$ due to their entanglement.
 
 To generate entangled states using the CNOT gate after applying the H gate for superposition, first the H gate to one qubit is applied to create superposition. Then the CNOT gate is applied with the qubit in superposition as the control qubit and another qubit as the target qubit.
 
@@ -428,11 +428,11 @@ Imagining two entangled quantum systems, like a drug molecule and a protein mole
 
 An entangled state, properly set up gives accurate results.
 
-Separable qubits are quite the opposite of entangled ones. A separable state can be broken down into a product of individual subsystem states. Taking a 2-qubit system, if a state can be expressed as |ψ⟩ = |a⟩ ⊗ |b⟩, where |a⟩ and |b⟩ are single-qubit states, then it's separable. For example, states like |00⟩, |01⟩, |10⟩, and |11⟩ are all separable.
+Separable qubits are quite the opposite of entangled ones. A separable state can be broken down into a product of individual subsystem states. Taking a 2-qubit system, if a state can be expressed as $|\psi⟩ = |a⟩ \otimes |b⟩$, where $|a⟩$ and $|b⟩$ are single-qubit states, then it's separable. For example, states like $|00⟩$, $|01⟩$, $|10⟩$, and $|11⟩$ are all separable.
 
-Combining two quantum states with the tensor product, shows their independence. For instance, |φ⟩⊗|ψ⟩ means |φ⟩ and |ψ⟩ are not meddling with each other.
+Combining two quantum states with the tensor product, shows their independence. For instance, $|\phi⟩ \otimes |\psi⟩$ means $|phi⟩$ and $|\psi⟩$ are not meddling with each other.
 
-Now, applying CNOT gates, it might be observed that a qubit's chance of being in state |0> increase while its chance of being in state |1> decreases. This tells how they're becoming entangled. The more CNOT gates applied, the more intertwined their states become until they're inseparable.
+Now, applying CNOT gates, it might be observed that a qubit's chance of being in state |0> increase while its chance of being in state $|1>$ decreases. This tells how they're becoming entangled. The more CNOT gates applied, the more intertwined their states become until they're inseparable.
 
 The HIV drug-protein interaction simulation represents entangled and separable states.
 
@@ -472,7 +472,7 @@ measured_state <- measure(Entangled_Drug_Protein)
 normalize_check(Entangled_Drug_Protein, probs = TRUE)
 ```
 
-Now, the second CNOT gate is applied and the probabilities for both qubits are obtained, |x1> and |x2>, to be in states |0> and |1>, respectively.
+Now, the second CNOT gate is applied and the probabilities for both qubits are obtained, $|x1>$ and $|x2>$, to be in states $|0>$ and $|1>$, respectively.
 
 ```{r avp3, eval=FALSE, echo=FALSE}
 # Second CNOT : CNOT(|x1x2>)

@@ -13,7 +13,7 @@ vignette: >
 
 # Qubits and Quantum States
 
-The term qubit (quantum bit) refers to a quantum system whose classical state set is {0, 1}. It is just a bit, but it can be in a quantum state. Quantum bit, i.e., qubit in quantum computing, is the elementary component of information and can be considered analogous to the 'bit' in classical computing. The quantum processor, which is used for quantum computing, handles information in the form of qubits. Qubits can be considered conceptual mathematical entities. The use of qubits as conceptual objects is of great advantage because quantum computation theory can be built for quantum data processing independent of any particular system.
+The term qubit (quantum bit) refers to a quantum system whose classical state set is $\{0, 1\}$. It is just a bit, but it can be in a quantum state. Quantum bit, i.e., qubit in quantum computing, is the elementary component of information and can be considered analogous to the 'bit' in classical computing. The quantum processor, which is used for quantum computing, handles information in the form of qubits. Qubits can be considered conceptual mathematical entities. The use of qubits as conceptual objects is of great advantage because quantum computation theory can be built for quantum data processing independent of any particular system.
 
 
 # Quantum States and Representation
@@ -23,7 +23,7 @@ A quantum state of a system is represented by a column vector characterized by t
 1. The entries of a quantum state vector are complex numbers.
 2. The sum of the absolute values squared of the entries of a quantum state vector must be equal to 1.
 
-For a single qubit, the computational basis consists of two states: |0⟩ and |1⟩. These basis states are orthogonal, meaning they are independent of each other and can't be created by combining the other. To define |0⟩ with the `qsimulatR` package [@qsimulatR2023], the `qstate` function is available. 
+For a single qubit, the computational basis consists of two states: $|0⟩$ and $|1⟩$. These basis states are orthogonal, meaning they are independent of each other and can't be created by combining the other. To define $|0⟩$ with the `qsimulatR` package [@qsimulatR2023], the `qstate` function is available. 
 
 ```{r setup}
 library(qsimulatR)
@@ -31,18 +31,18 @@ ket0 <- qstate(nbits = 1)
 ket0
 ```
 
-The ket0 object represents the state |0⟩ in quantum notation. It's state structure can be examined using the `str()` function.
+The `ket0` object represents the state $|0⟩$ in quantum notation. It's state structure can be examined using the `str()` function.
 
 ```{r str}
 ket0 |> str()
 ```
 
-This output represents the state |0⟩ in quantum notation, which produces a formal class obhect that belongs to the formal class `qstate` defined in the `qsimulatR` package. A breakdown of each part of the output follows:
+This output represents the state $|0⟩$ in quantum notation, which produces a formal class object that belongs to the formal class `qstate` defined in the `qsimulatR` package. A breakdown of each part of the output follows:
 
 - `nbits` represents the number of qubits in the quantum state. In this case, it's 1 qubit. 
 - `coefs` contains the coefficients of the quantum state vector. Here, there are two coefficients:
-  - `1+0i` corresponds to basis state |0⟩ and represents real number 1
-  - `0+0i` corresponds to basis state |1⟩ and represents real number 0
+  - `1+0i` corresponds to basis state $|0⟩$ and represents real number 1
+  - `0+0i` corresponds to basis state $|1⟩$ and represents real number 0
 - `basis` contains the names of the basis states corresponding to the coefficients in the `coefs` slot.
 - `noise` contains information about noise parameters. In this case the noise parameters are not applied.
   - `p` probability 
@@ -66,7 +66,7 @@ The state structure of `ket1` can be examined as well.
 ket1 |> str()
 ```
 
-Next, a state |1⟩ can also be defined by applying an X-gate to |0⟩.
+Next, a state $|1⟩$ can also be defined by applying an X-gate to $|0⟩$.
 
 ```{r ket0}
 ket1 <- X(1)*ket0
@@ -106,11 +106,11 @@ complex_check(ket1)
 
 # Understanding Superposition
 
-A qubit can exist in states beyond just |0⟩ or |1⟩. This phenomenon is known as superposition, where the qubit can adopt any combination of the states |0⟩ and |1⟩. Superposition is a fundamental concept in quantum computing that enables qubits to exist in multiple states simultaneously, leading to exponential computational advantages. However, upon measurement, the superposition collapses, and the qubit takes on either the |0⟩ or |1⟩ state with probabilities determined by the coefficients ${\alpha}$ and ${\beta}$.
+A qubit can exist in states beyond just $|0⟩$ or $|1⟩$. This phenomenon is known as superposition, where the qubit can adopt any combination of the states $|0⟩$ and $|1⟩$. Superposition is a fundamental concept in quantum computing that enables qubits to exist in multiple states simultaneously, leading to exponential computational advantages. However, upon measurement, the superposition collapses, and the qubit takes on either the $|0⟩$ or $|1⟩$ state with probabilities determined by the coefficients ${\alpha}$ and ${\beta}$.
 
 ## Classical vs. Quantum Bits
 
-Classically, a bit can be either 0 or 1, representing two distinct states. In contrast, a qubit, the quantum analogue of a classical bit, can exist in a superposition of these states, denoted as |0⟩ and |1⟩. The superposition state of a qubit |$\psi$⟩ can be mathematically represented as in Equation \@ref(eq:spos).
+Classically, a bit can be either 0 or 1, representing two distinct states. In contrast, a qubit, the quantum analogue of a classical bit, can exist in a superposition of these states, denoted as $|0⟩$ and $|1⟩$. The superposition state of a qubit $|\psi⟩$ can be mathematically represented as in Equation \@ref(eq:spos).
 
 $$
 \begin{equation}
@@ -118,11 +118,11 @@ $$
     (\#eq:spos)
 \end{equation}
 $$
-Here, 𝛼 and 𝛽 are complex coefficients (amplitudes) satisfying the normalization condition of Equation \@ref(eq:norm).
+Here, $\alpha$ and $\betat$ are complex coefficients (amplitudes) satisfying the normalization condition of Equation \@ref(eq:norm).
 
 $$
 \begin{equation}
-    |𝛼|² + |𝛽|² = 1 
+    |\alpha|² + |\beta|² = 1 
     (\#eq:norm)
 \end{equation}
 $$
@@ -130,11 +130,11 @@ $$
 ## Conceptual Visualization
 
 
-A qubit state can be represented as a unit sphere, with the north pole corresponding to |0⟩ and the south pole corresponding to |1⟩. The superposition state allows the qubit to exist at any point on this sphere, not just at the poles.
+A qubit state can be represented as a unit sphere, with the north pole corresponding to $|0⟩$ and the south pole corresponding to $|1⟩$. The superposition state allows the qubit to exist at any point on this sphere, not just at the poles.
 
 ## Measurement and Collapse
 
-When a qubit is observed or measured directly, it collapses from its superposition state to one of the possible states (|0⟩ or |1⟩), akin to Schrödinger's cat being either alive or dead upon observation. The probability of obtaining each outcome (0 or 1) upon measurement is determined by the squared magnitudes of the coefficients (|𝛼|² and |𝛽|²).
+When a qubit is observed or measured directly, it collapses from its superposition state to one of the possible states ($|0⟩$ or $|1⟩$), akin to Schrödinger's cat being either alive or dead upon observation. The probability of obtaining each outcome (0 or 1) upon measurement is determined by the squared magnitudes of the coefficients ($|\alpha|^2$ and $|\beta|^2$).
 
 ## Multi-Qubit Systems
 
@@ -155,9 +155,9 @@ psi <- qstate(nbits = 1, coefs = c((1+2i)/3, -2/3))
 psi |> str()
 ```
 
-The quantum state |𝜓⟩ in Equation \@ref(eq:spsi) is a superposition of |0⟩ and |1⟩ states, as indicated by its complex coefficients.
+The quantum state $|\psi⟩$ in Equation \@ref(eq:spsi) is a superposition of $|0⟩$ and $|1⟩$ states, as indicated by its complex coefficients.
 
-To create superpositions of the states |00⟩, |01⟩, |10⟩, and |11⟩ in an implemented 2-qubit system described by a 4-dimensional complex vector space with four computational basis using `qsimulatR`, the coefficients for the superposition states must be defined. Then, the quantum state objects for each superposition state are created. Finally, validation checks are performed using `qvirus` functions to ensure the correctness of the quantum states.
+To create superpositions of the states $|00⟩$, $|01⟩$, $|10⟩$, and $|11⟩$ in an implemented 2-qubit system described by a 4-dimensional complex vector space with four computational basis using `qsimulatR`, the coefficients for the superposition states must be defined. Then, the quantum state objects for each superposition state are created. Finally, validation checks are performed using `qvirus` functions to ensure the correctness of the quantum states.
 
 ```{r mspq}
 # Define coefficients for the superposition states
@@ -228,7 +228,7 @@ complex_check(ket_superposition)
 normalize_check(ket_superposition)
 ```
 
-In quantum mechanics, normalized states are represented as vectors on the surface of a sphere called the Bloch sphere. The angle θ (ranging from 0 to 2π) determines the probability of measuring either the |0⟩ or |1⟩ states, while the angle ϕ (ranging from 0 to π) represents the relative phase.
+In quantum mechanics, normalized states are represented as vectors on the surface of a sphere called the Bloch sphere. The angle $\theta$ (ranging from 0 to 2$\pi$) determines the probability of measuring either the $|0⟩$ or $|1⟩$ states, while the angle $\phi$ (ranging from 0 to $\pi$) represents the relative phase.
 
 Mathematically, a normalized quantum state can be written in the form of Equation \@ref(eq:pur1).
 
@@ -238,20 +238,20 @@ $$
     (\#eq:pur1)
 \end{equation}
 $$
-Here ∣ψ⟩ represents the quantum state, θ is the angle that determines the probability amplitude of measuring the state ∣0⟩ or ∣1⟩ and ϕ is the phase angle that describes the relative phase between the states.
+Here $∣\psi⟩$ represents the quantum state, $\theta$ is the angle that determines the probability amplitude of measuring the state $∣0⟩$ or $∣1⟩$ and $\phi$ is the phase angle that describes the relative phase between the states.
 
-On the Bloch sphere, the vector representing state of Equation \@ref(eq:pur1) points to a specific location determined by θ and ϕ, and its length is always 1, denoting the normalized state. This visual representation helps in understanding the state's properties and how measurements would behave in quantum systems.
+On the Bloch sphere, the vector representing state of Equation \@ref(eq:pur1) points to a specific location determined by $\theta$ and $\phi$, and its length is always 1, denoting the normalized state. This visual representation helps in understanding the state's properties and how measurements would behave in quantum systems.
 
 In a 2-qubit system, a normalized (pure) quantum state can be represented as in Equation \@ref(eq:pu21)
 
 $$
 \begin{equation}
-    |\psi⟩ = a_{00}|00⟩ + α_{01}∣01⟩ + α_{10}∣10⟩ + α_{11}∣11⟩
+    |\psi⟩ = \alpha_{00}|00⟩ + \alpha_{01}∣01⟩ + \alpha_{10}∣10⟩ + \alpha_{11}∣11⟩
     (\#eq:pu21)
 \end{equation}
 $$
 
-where ∣$α_{00}$∣² + ∣$α_{01}$∣² + ∣$α_{10}$∣² + ∣$α_{11}$∣² = 1, due to normalization.
+where $∣\alpha_{00}∣^2 + ∣\alpha_{01}∣^2 + ∣\alpha_{10}|^2 + ∣\alpha_{11}|^2 = 1$, due to normalization.
 
 For simplicity of illustration, the specific state of Equation \@ref(eq:pu22) with equal coefficients for all basis states is considered.
 
@@ -262,15 +262,15 @@ $$
 \end{equation}
 $$
 
-This state corresponds to θ=π/2 and ϕ=0 in the Bloch sphere representation.
+This state corresponds to $\theta = \pi/2$ and $\phi = 0$ in the Bloch sphere representation.
 
-On the Bloch sphere, the state in Equation \@ref(eq:pu22) is located at the equator (since θ=π/2), and all points on the equator are equidistant from the north and south poles. This implies that all basis states in this superposition have equal probability amplitudes, making measurements equally likely to yield any of the four basis states ∣00⟩, ∣01⟩, ∣10⟩, ∣11⟩.
+On the Bloch sphere, the state in Equation \@ref(eq:pu22) is located at the equator (since $\theta = \pi/2$), and all points on the equator are equidistant from the north and south poles. This implies that all basis states in this superposition have equal probability amplitudes, making measurements equally likely to yield any of the four basis states $∣00⟩$, $∣01⟩$, $∣10⟩$, $∣11⟩$.
 
-In the Bloch hyper-sphere representation each qubit corresponds to a separate Bloch sphere, and the overall state of the system exists in a higher-dimensional space. The state of the entire n-qubit system is represented as a point on the surface of the Bloch hyper-sphere. The dimensions of the Bloch hyper-sphere increase exponentially with the number of qubits. For n qubits, the Bloch hyper-sphere is a $2^n$-dimensional space. The angles θ and ϕ in the Bloch sphere representation for each qubit generalize to higher-dimensional analogues in the Bloch hyper-sphere.
+In the Bloch hyper-sphere representation each qubit corresponds to a separate Bloch sphere, and the overall state of the system exists in a higher-dimensional space. The state of the entire n-qubit system is represented as a point on the surface of the Bloch hyper-sphere. The dimensions of the Bloch hyper-sphere increase exponentially with the number of qubits. For n qubits, the Bloch hyper-sphere is a $2^n$-dimensional space. The angles $\theta$ and $\phi$ in the Bloch sphere representation for each qubit generalize to higher-dimensional analogues in the Bloch hyper-sphere.
 
 The Bloch hyper-sphere provides a geometric way to understand the state of a multi-qubit system, just as the Bloch sphere does for a single qubit. It helps visualize superpositions, entanglement, and other quantum phenomena in higher-dimensional spaces, which can be challenging to conceptualize purely mathematically.
 
-A given quantum state ∣ψ⟩ in a n-qubit system can be expressed as in Equation \@ref(eq:purn) by generalizing the quantum state equation to an n-qubit system.
+A given quantum state $∣\psi⟩$ in a n-qubit system can be expressed as in Equation \@ref(eq:purn) by generalizing the quantum state equation to an n-qubit system.
 
 $$
 \begin{equation}
@@ -279,7 +279,7 @@ $$
 \end{equation}
 $$
 
-Here |ψ⟩ represents the quantum state of the n-qubit system, $x_1, x_2,...,x_n$ are the individual qubit states, where each $x_i$ can be either 0 or 1. The coefficients $α_{x_1x_2...x_n}$ are the complex coefficients or amplitudes associated with each computational basis state ∣$x_1x_2...x_n$⟩, where the sum is taken over all possible combinations of $x_1, x_2,..., x_n$, which gives the superposition of all basis states.
+Here $|\psi⟩$ represents the quantum state of the n-qubit system, $x_1, x_2,...,x_n$ are the individual qubit states, where each $x_i$ can be either 0 or 1. The coefficients $α_{x_1x_2...x_n}$ are the complex coefficients or amplitudes associated with each computational basis state ∣$x_1x_2...x_n$⟩, where the sum is taken over all possible combinations of $x_1, x_2,..., x_n$, which gives the superposition of all basis states.
 
 The generalization in Equation \@ref(eq:purn) maintains the concept of superposition, where the quantum state is a linear combination of all possible computational basis states. However, in higher dimensions (more qubits), the number of terms in the superposition and the complexity of the state increase exponentially, showcasing the power of quantum computing in handling vast amounts of information simultaneously.
 
@@ -289,23 +289,23 @@ For a single qubit system, the complex coefficients can be written in the form o
 
 $$
 \begin{equation}
-    α_0 = \cos{\frac{\theta}{2}} \\
-    α_1 = e^{i\phi} \sin{\frac{\theta}{2}}
+    \alpha_0 = \cos{\frac{\theta}{2}} \\
+    \alpha_1 = e^{i\phi} \sin{\frac{\theta}{2}}
     (\#eq:cff1)
 \end{equation}
 $$
 
-In the general n-qubit case, where $x_1, x_2, ..., x_n$ represent the individual qubit states, the complex coefficients get expressed as in Equation \@ref(eq:cffn)
+In the general n-qubit case, where $x_1, x_2, ..., x_n$ represent the individual qubit states, the complex coefficients get expressed as in Equation \@ref(eq:cffn).
 
 $$
 \begin{equation}
-    α_{x_1x_2...x_n} = \prod_{x_1,...,x_n} \cos{\frac{\theta_i}{2}}^{1−x_i} e^{i\phi_i} \sin{\frac{\theta_i}{2}}^{x_i}
+    \alpha_{x_1x_2...x_n} = \prod_{x_1,...,x_n} \cos{\frac{\theta_i}{2}}^{1−x_i} e^{i\phi_i} \sin{\frac{\theta_i}{2}}^{x_i}
     (\#eq:cffn)
 \end{equation}
 $$
-Here $θ_i$ and $ϕ_i$ are the angles that determine the probability amplitudes and relative phases for each qubit. The $x_i$ takes the value 0 or 1 for each qubit, indicating the state ∣0⟩ or ∣1⟩ respectively.
+Here $\theta_i$ and $\phi_i$ are the angles that determine the probability amplitudes and relative phases for each qubit. The $x_i$ takes the value 0 or 1 for each qubit, indicating the state $∣0⟩$ or $∣1⟩$ respectively.
 
-Expression \@ref(eq:cffn) generalizes the trigonometric representation of complex coefficients to n qubits, where each qubit contributes its own angle $θ_i$ and phase $ϕ_i$ to the overall quantum state, as a way to extend the concept of the Bloch sphere to higher-dimensional quantum systems, where the coordinates of the Bloch vector become more complex but still follow the principles of superposition and phase.
+Expression \@ref(eq:cffn) generalizes the trigonometric representation of complex coefficients to n qubits, where each qubit contributes its own angle $\theta_i$ and phase $\phi_i$ to the overall quantum state, as a way to extend the concept of the Bloch sphere to higher-dimensional quantum systems, where the coordinates of the Bloch vector become more complex but still follow the principles of superposition and phase.
 
 To prove that coefficients in Equation \qref(eq:cff1) define a quantum state, it is required to prove that the entries are complex numbers and that the normalization condition holds. 
 
@@ -313,61 +313,61 @@ For the 1-qubit system case, the general form of a normalized (pure) quantum sta
 
 $$
 \begin{equation}
-     |\psi⟩ = a_0 ∣0⟩ + α_1∣1⟩
+     |\psi⟩ = \alpha_0 ∣0⟩ + \alpha_1∣1⟩
     (\#eq:pu11)
 \end{equation}
 $$
-Where $α_0$ and $α_1$ are complex coefficients as in Equation \@ref(eq:cff1), and ∣0⟩ and ∣1⟩ are the basis states of the qubit system. Both $α_0$ and $α_1$ involve trigonometric functions and exponentials. Trigonometric functions like cosine and sine can generate complex numbers, especially when combined with phases in the form of $e^{iϕ}$. Since $α_0$ and $α_1$ are combinations of such functions, they are indeed complex numbers.
+Where $\alpha_0$ and $\alpha_1$ are complex coefficients as in Equation \@ref(eq:cff1), and $∣0⟩$ and $∣1⟩$ are the basis states of the qubit system. Both $\alpha_0$ and $\alpha_1$ involve trigonometric functions and exponentials. Trigonometric functions like cosine and sine can generate complex numbers, especially when combined with phases in the form of $e^{i\phi}$. Since $\alpha_0$ and $\alpha_1$ are combinations of such functions, they are indeed complex numbers.
 
-The normalization condition for a quantum state is that the sum of the squared magnitudes of the coefficients must equal 1. Mathematically, this is expressed as Equation \@ref(eq:norm), where, substituing the expressions for $α_0$ and $α_1$ and simplifying to verify normalization results in Equation \@ref(eq:nr11).
+The normalization condition for a quantum state is that the sum of the squared magnitudes of the coefficients must equal 1. Mathematically, this is expressed as Equation \@ref(eq:norm), where, substituing the expressions for $\alpha_0$ and $\alpha_1$ and simplifying to verify normalization results in Equation \@ref(eq:nr11).
 
 $$
 \begin{equation}
-     |α_0∣² + ∣α_1∣² = \Big|\cos{\frac{\theta}{2}}\Big|² + \Big|e^{iϕ} \sin{\frac{θ}{2}}\Big|² \\
-    = \cos²{\frac{θ}{2}} + \Big(e^{iϕ} \sin{\frac{θ}{2}}\Big) \Big(e^{−iϕ} \sin{\frac{θ}{2}}\Big) \\
-    = \cos²{\frac{θ}{2}} + \Big(e^{iϕ} \sin{\frac{θ}{2}}\Big) \Big(e^{−iϕ} \sin{\frac{θ}{2}}\Big) \\
-    = \cos²{\frac{θ}{2}} + \sin²{\frac{θ}{2}} \\
+     |\alpha_0∣² + ∣\alpha_1∣^2 = \Big|\cos{\frac{\theta}{2}}\Big|^2 + \Big|e^{i\phi} \sin{\frac{\theta}{2}}\Big|^2 \\
+    = \cos^2{\frac{\theta}{2}} + \Big(e^{i\phi} \sin{\frac{\theta}{2}}\Big) \Big(e^{−i\phi} \sin{\frac{\theta}{2}}\Big) \\
+    = \cos^2{\frac{\theta}{2}} + \Big(e^{i\phi} \sin{\frac{\theta}{2}}\Big) \Big(e^{−i\phi} \sin{\frac{\theta}{2}}\Big) \\
+    = \cos^2{\frac{\theta}{2}} + \sin^2{\frac{\theta}{2}} \\
     = 1
     (\#eq:nr11)
 \end{equation}
 $$
 
-Therefore, the coefficients $α_0$ and $α_1$ are complex numbers and they satisfy the normalization condition for a quantum state in the 1-dimensional case. 
+Therefore, the coefficients $\alpha_0$ and $\alpha_1$ are complex numbers and they satisfy the normalization condition for a quantum state in the 1-dimensional case. 
 
 In the 2-qubit system, the quantum state is represented by Equation \@ref(eq:pu23).
 
 $$
 \begin{equation}
-    ∣ψ⟩ = α_{00}∣00⟩ + α_{01}∣01⟩ + α_{10}∣10⟩ + α_{11}∣11⟩
+    ∣\psi⟩ = \alpha_{00}∣00⟩ + \alpha_{01}∣01⟩ + \alpha_{10}∣10⟩ + \alpha_{11}∣11⟩
     (\#eq:pu23)
 \end{equation}
 $$
 
-Where ∣00⟩, ∣01⟩, ∣10⟩, and ∣11⟩ are the basis states of the 2-qubit system.
+Where $∣00⟩$, $∣01⟩$, $∣10⟩$, and $∣11⟩$ are the basis states of the 2-qubit system.
 
-Similar to the 1-dimensional case, the complex coefficients $α_{00}$, $α_{01}$, $α_{10}$, and $α_{11}$ are expressed in terms of angles θ and ϕ, as in Equation \@ref(eq:cff2).
+Similar to the 1-dimensional case, the complex coefficients $\alpha_{00}$, $\alpha_{01}$, $\alpha_{10}$, and $\alpha_{11}$ are expressed in terms of angles $\theta$ and $\phi$, as in Equation \@ref(eq:cff2).
 
 $$
 \begin{equation}
-   α_{00} = \cos{\frac{θ_1}{2}} \cos{\frac{θ_2}{2}} \\
-   α_{01} = e^{iϕ_{01}} \cos{\frac{θ_1}{2}} \sin{\frac{θ_2}{2}} \\
-   α_{10} = e^{iϕ_{10}} \cos{\frac{θ_2}{2}} \sin{\frac{θ_1}{2}} \\
-   α_{11} = e^{i(ϕ_{01} + ϕ_{10})} \sin{\frac{θ_1}{2}} \sin{\frac{θ_2}{2}}
+   \alpha_{00} = \cos{\frac{\theta_1}{2}} \cos{\frac{\theta_2}{2}} \\
+   \alpha_{01} = e^{i\phi_{01}} \cos{\frac{\theta_1}{2}} \sin{\frac{\theta_2}{2}} \\
+   \alpha_{10} = e^{i\phi_{10}} \cos{\frac{\theta_2}{2}} \sin{\frac{\theta_1}{2}} \\
+   \alpha_{11} = e^{i(\phi_{01} + \phi_{10})} \sin{\frac{\theta_1}{2}} \sin{\frac{\theta_2}{2}}
   (\#eq:cff2)
 \end{equation}
 $$
 To prove that coefficients in Equation \@ref(eq:pu23) define a quantum state, they must satisfy being complex numbers in every entry and the normalization condition.
 
-Similar to the 1-dimensional case, the coefficients $a_{00}$, $α_{01}$, $α_{10}$, and $α_{11}$ involve trigonometric functions and exponentials. Since these functions can generate complex numbers, the coefficients are indeed complex.
+Similar to the 1-dimensional case, the coefficients $\alpha_{00}$, $\alpha_{01}$, $\alpha_{10}$, and $\alpha_{11}$ involve trigonometric functions and exponentials. Since these functions can generate complex numbers, the coefficients are indeed complex.
 
-To prove the normalization condition for a quantum state in the 2-dimensional case, a starting point begins with the parameterization given by Equation \@ref(eq:cff2), renaming each parameter $\alpha$, $\beta$, $\gamma$ and $\delta$ for each coefficient $a_{00}$, $α_{01}$, $α_{10}$, and $α_{11}$ respectively. Squaring each coefficient gives results in Equation \@ref(eq:nr21).
+To prove the normalization condition for a quantum state in the 2-dimensional case, a starting point begins with the parameterization given by Equation \@ref(eq:cff2), renaming each parameter $\alpha$, $\beta$, $\gamma$ and $\delta$ for each coefficient $\alpha_{00}$, $\alpha_{01}$, $\alpha_{10}$, and $\alpha_{11}$ respectively. Squaring each coefficient gives results in Equation \@ref(eq:nr21).
 
 $$
 \begin{equation}
-     |α∣² = \Big(\cos{\frac{θ_1}{2}} \cos{\frac{θ_2}{2}}\Big)² \\
-     ∣β∣² = \Big|e^{iϕ_1} \sin{\frac{θ_1}{2}} \cos{\frac{θ_2}{2}}\Big|² \\
-     ∣γ∣² = \Big|e^{iϕ_2} \cos\frac{θ_1}{2} \sin{\frac{θ_2}{2}}\Big|² \\
-     |δ∣² = \Big|e^{i(ϕ_1 + ϕ_2)} \sin{\frac{θ_1}{2}} \sin{\frac{θ_2}{2}}\Big|²
+     |\alpha∣^2 = \Big(\cos{\frac{\theta_1}{2}} \cos{\frac{\theta_2}{2}}\Big)^2 \\
+     ∣\beta∣^2 = \Big|e^{i\phi_1} \sin{\frac{\theta_1}{2}} \cos{\frac{\theta_2}{2}}\Big|^2 \\
+     ∣\gamma∣^2 = \Big|e^{i\phi_2} \cos\frac{\theta_1}{2} \sin{\frac{\theta_2}{2}}\Big|^2 \\
+     |\delta∣² = \Big|e^{i(\phi_1 + \phi_2)} \sin{\frac{\theta_1}{2}} \sin{\frac{\theta_2}{2}}\Big|^2
     (\#eq:nr21)
 \end{equation}
 $$
@@ -375,10 +375,10 @@ Simplifying the squared magnitudes results in Equation \@ref(eq:nr22).
 
 $$
 \begin{equation}
-     |α∣² = \cos²{\frac{θ_1}{2}} \cos²{\frac{θ_2}{2}} \\
-     ∣β∣² = \Big|\sin{\frac{θ_1}{2}} \cos{\frac{θ_2}{2}}\Big|² \\
-     ∣γ∣² = \Big|\cos\frac{θ_1}{2} \sin{\frac{θ_2}{2}}\Big|² \\
-     |δ∣² = \Big|\sin{\frac{θ_1}{2}} \sin{\frac{θ_2}{2}}\Big|²
+     |\alpha∣^2 = \cos^2{\frac{\theta_1}{2}} \cos^2{\frac{\theta_2}{2}} \\
+     ∣\beta∣^2 = \Big|\sin{\frac{\theta_1}{2}} \cos{\frac{\theta_2}{2}}\Big|^2 \\
+     ∣\gamma∣^2 = \Big|\cos\frac{\theta_1}{2} \sin{\frac{\theta_2}{2}}\Big|^2 \\
+     |\delta∣^2 = \Big|\sin{\frac{\theta_1}{2}} \sin{\frac{\theta_2}{2}}\Big|^2
     (\#eq:nr22)
 \end{equation}
 $$
@@ -386,10 +386,10 @@ Then, Equation \@ref(eq:nr23) is obtaied by applying trigonometric identities.
 
 $$
 \begin{equation}
-     ∣α∣² = \frac{1 + \cos{θ_1}}{2} \frac{1 + \cos{θ_2}}{2} \\
-     ∣β∣² = \frac{1 - \cos{θ_1}}{2} \frac{1 + \cos{θ_2}}{2} \\
-     ∣γ∣² = \frac{1 + \cos{θ_1}}{2} \frac{1 - \cos{θ_2}}{2} \\
-     ∣δ∣² = \frac{1 − \cos{θ_1}}{2} \frac{1 - \cos{θ_2}}{2}
+     ∣\alpha∣^2 = \frac{1 + \cos{\theta_1}}{2} \frac{1 + \cos{\theta_2}}{2} \\
+     ∣\beta∣^2 = \frac{1 - \cos{\theta_1}}{2} \frac{1 + \cos{\theta_2}}{2} \\
+     ∣\gamma∣^2 = \frac{1 + \cos{\theta_1}}{2} \frac{1 - \cos{\theta_2}}{2} \\
+     ∣\delta∣^2 = \frac{1 − \cos{\theta_1}}{2} \frac{1 - \cos{\theta_2}}{2}
     (\#eq:nr23)
 \end{equation}
 $$
@@ -397,20 +397,20 @@ Expanding the products and simplifying further gives Equation \@ref(eq:nr24).
 
 $$
 \begin{equation}
-     ∣α∣² = \frac{1 + \cos{θ_1} + \cos{θ_2} + \cos{θ_1}\cos{θ_2}}{4} \\
-     ∣β∣² = \frac{1 - \cos{θ_1}+ \cos{θ_2} - \cos{θ_1}\cos{θ_2}}{4} \\
-     ∣γ∣² = \frac{1 + \cos{θ_1} - \cos{θ_2} - \cos{θ_1}\cos{θ_2}}{4} \\
-     ∣δ∣² = \frac{1 - \cos{θ_1} - \cos{θ_2} + \cos{θ_1}\cos{θ_2}}{4}
+     ∣\alpha∣^2 = \frac{1 + \cos{\theta_1} + \cos{\theta_2} + \cos{\theta_1}\cos{\theta_2}}{4} \\
+     ∣\beta∣^2 = \frac{1 - \cos{\theta_1}+ \cos{\theta_2} - \cos{\theta_1}\cos{\theta_2}}{4} \\
+     ∣\gamma∣^2 = \frac{1 + \cos{\theta_1} - \cos{\theta_2} - \cos{\theta_1}\cos{\theta_2}}{4} \\
+     ∣\delta∣^2 = \frac{1 - \cos{\theta_1} - \cos{\theta_2} + \cos{\theta_1}\cos{\theta_2}}{4}
     (\#eq:nr24)
 \end{equation}
 $$
-And therefore, combining the terms $∣α∣² + ∣β∣² + ∣γ∣² + ∣δ∣² = 1$.
+And therefore, combining the terms $∣\alpha|^2 + ∣\beta|^2 + ∣\gamma|^2+ |\delta|^2 = 1$.
 
-It's been proven that the coefficients $a_{00}$, $α_{01}$, $α_{10}$, and $α_{11}$ are complex numbers and satisfy the normalization condition, defining a valid quantum state in the 2-dimensional case.
+It's been proven that the coefficients $\alpha_{00}$, $\alpha_{01}$, $\alpha_{10}$, and $\alpha_{11}$ are complex numbers and satisfy the normalization condition, defining a valid quantum state in the 2-dimensional case.
 
-The previous results follow from the property that ∣$e^{iϕ}$∣ = 1 for any real value of ϕ and from the fact that the absolute value of a complex number z = a + bi is given by ∣z∣= $\sqrt{a² +b²}$. Then, z = $e^{iϕ_1} = \cos{ϕ_1} + i\sin{ϕ_1}$. Computing the absolute gives $|e^{iϕ_1}∣= |\sqrt{\cos²{ϕ_1} + \sin⁡²{ϕ_1}}| = \sqrt{1} = 1$.
+The previous results follow from the property that ∣$e^{i\phi}$∣ = 1 for any real value of ϕ and from the fact that the absolute value of a complex number z = a + bi is given by ∣z∣= $\sqrt{a^2 + b^2}$. Then, z = $e^{i\phi_1} = \cos{\phi_1} + i\sin{\phi_1}$. Computing the absolute gives $|e^{i\phi_1}∣= |\sqrt{\cos^2{\phi_1} + \sin^2{\phi_1}}| = \sqrt{1} = 1$.
 
-The trigonometric identity $\cos²{ϕ} + \sin²{ϕ} = 1$ holds for any real number ϕ, which means that the absolute value of $e^{iϕ_1}$ is always 1 regardless of the value of $ϕ_1$. Hence, ∣$e^{iϕ_1}$∣ = 1 for any real $ϕ_1$.
+The trigonometric identity $\cos^2{\phi} + \sin^2{\phi} = 1$ holds for any real number $\phi$, which means that the absolute value of $e^{i\phi_1}$ is always 1 regardless of the value of $\phi_1$. Hence, ∣$e^{i\phi_1}$∣ = 1 for any real $\phi_1$.
 
 Here are a few examples that represent 2-dimensional complex vectors with entries that sum to 1, that is, for the complex vector to represent a valid quantum state.
 
@@ -422,11 +422,11 @@ Here are a few examples that represent 2-dimensional complex vectors with entrie
 
 These examples illustrate valid 2-dimensional complex vectors that represent quantum states.
 
-The complex vectors as normalized pure quantum states in terms of their parameters for the first example, can be represented as a normalized pure quantum state ∣$ψ_1$⟩ with angle parameters $θ_1 = \frac{\pi}{4}$ (45 degrees) and $ϕ_1$ = 0 (No relative phase). The state of example 2 corresponds to a normalized pure quantum state ∣$ψ_2$⟩ with angle parameters $θ_2 = \frac{\pi}{2}$ (90 degrees) and $ϕ_2 = \frac{\pi}{2}$ (90 degrees, introducing a relative phase). Example 3 can be represented as a normalized pure quantum state ∣$ψ_3$⟩ with parameter $θ_3$ such that $\cos{\theta_3} = \frac{3}{5}$, which leads to $θ_3$ ≈ 0.927 radians (or about 53.13 degrees). The angle $ϕ_3$ is equal to $\frac{\pi}{2}$ (90 degrees with relative phase).
+The complex vectors as normalized pure quantum states in terms of their parameters for the first example, can be represented as a normalized pure quantum state $|\psi_1⟩$ with angle parameters $\theta_1 = \frac{\pi}{4}$ (45 degrees) and $\phi_1$ = 0 (No relative phase). The state of example 2 corresponds to a normalized pure quantum state $|\psi_2⟩$ with angle parameters $\theta_2 = \frac{\pi}{2}$ (90 degrees) and $\phi_2 = \frac{\pi}{2}$ (90 degrees, introducing a relative phase). Example 3 can be represented as a normalized pure quantum state ∣$\psi_3$⟩ with parameter $\theta_3$ such that $\cos{\theta_3} = \frac{3}{5}$, which leads to $\theta_3 \approx 0.927$ radians (or about 53.13 degrees). The angle $\phi_3$ is equal to $\frac{\pi}{2}$ (90 degrees with relative phase).
 
-These parameters help describe the state of each quantum system in terms of its orientation on the Bloch sphere, where θ determines the probability amplitudes of measuring the state in the computational basis, and ϕ represents the relative phase between basis states.
+These parameters help describe the state of each quantum system in terms of its orientation on the Bloch sphere, where $\theta$ determines the probability amplitudes of measuring the state in the computational basis, and $\theta$ represents the relative phase between basis states.
 
-To visualize the quantum states represented by the complex vectors on the Bloch sphere, for a given state ∣$ψ_i$⟩, the coordinates of the state are converted to spherical coordinates with given $θ_i$ and $ϕ_i$. Then a point on the Bloch sphere corresponding to these coordinates is plotted.
+To visualize the quantum states represented by the complex vectors on the Bloch sphere, for a given state $|ψ_i⟩$, the coordinates of the state are converted to spherical coordinates with given $\theta_i$ and $\phi_i$. Then a point on the Bloch sphere corresponding to these coordinates is plotted.
 
 The `pure_qubit1` function in `qvirus` creates a normalized pure quantum state for a 1-qubit system   
 
@@ -479,9 +479,9 @@ In quantum mechanics, when a quantum system is measured, its superposition colla
 
 The Born rule states that when measuring a quantum state, each classical state has a probability of being the measurement outcome. This probability is determined by the squared absolute value of the component in the quantum state vector corresponding to that classical state.
 
-Considering the quantum state ∣ψ⟩ of the illustration example in Equation \@ref(eq:spsi) with complex amplitudes $α=\frac{1+2i}{3}$ and $β=-\frac{2}{3}$. The probability of measuring classical state is calculated as $Prob(0)=∣α∣²=∣\frac{1+2i}{3}∣²=\frac{5}{9}$ and classical state 1 is obtained as $Prob(1)=∣β∣²=∣−\frac{2}{3}∣²=\frac{4}{9}$, therefore, these probabilities satisfy the condition that the sum of the squared absolute values of the components in the quantum state vector equals 1.
+Considering the quantum state ∣ψ⟩ of the illustration example in Equation \@ref(eq:spsi) with complex amplitudes $\alpha = \frac{1+2i}{3}$ and $\beta = -\frac{2}{3}$. The probability of measuring classical state is calculated as $Prob(0) = ∣\alpha∣^2 = ∣\frac{1+2i}{3}∣^2 = \frac{5}{9}$ and classical state 1 is obtained as $Prob(1) = ∣\beta∣^2 = ∣−\frac{2}{3}∣^2 = \frac{4}{9}$, therefore, these probabilities satisfy the condition that the sum of the squared absolute values of the components in the quantum state vector equals 1.
 
-By setting the boolean argument `probs = TRUE` in the `normalize_check` function, the probabilities of being in classical states 0 and 1 for a given quantum state object ∣ψ⟩ with normalized coefficients are obtained.
+By setting the boolean argument `probs = TRUE` in the `normalize_check` function, the probabilities of being in classical states 0 and 1 for a given quantum state object $∣\psi⟩$ with normalized coefficients are obtained.
 
 ```{r mqso}
 normalize_check(psi, probs = TRUE)
@@ -496,13 +496,14 @@ This demonstrates how quantum measurements yield probabilistic outcomes based on
 
 In quantum mechanics, the Bloch sphere is a geometric representation of the pure satate space of a 2-level quantum mechanical system. The Bloch sphere helps in the understanding of the geometric interpretation of unitary operations or gates performed on qubits.
 
-From the normalized (pure) quantum state representation of Equation \@ref(eq:pur1) the angle θ ε [0, 2π] determines the probability to measure ∣0⟩ or ∣1⟩ states, and the angle φ ε [0, π] describes the relative phase. A relative phase is the difference between the phases of the coefficients of ∣0⟩ and ∣1⟩. Relative phase is the core of quantum computing. If there are 2 quantum states with different relative phases (i.e. 2 values of Φ) then both the qubit states are different.
+From the normalized (pure) quantum state representation of Equation \@ref(eq:pur1) the angle $\theta \in [0, 2\pi]$ determines the probability to measure $∣0⟩$ or $∣1⟩$ states, and the angle $\phi \in [0, \pi]$ describes the relative phase. A relative phase is the difference between the phases of the coefficients of $∣0⟩$ and $∣1⟩$. Relative phase is the core of quantum computing. If there are 2 quantum states with different relative phases (i.e. 2 values of $\phi$) then both the qubit states are different.
 
-The Bloch sphere is a sphere with radius r, where |r| = 1, and all normalized (pure) states are points on its surface. The antipodal points on a bloch sphere represent orthogonal vectors. Hence ∣0⟩ and ∣1⟩ are orthogonal vectors. The radius of the Bloch sphere is of length 1. Each point on the surface of the Bloch sphere is a unique quantum state.
+The Bloch sphere is a sphere with radius r, where $|r| = 1$, and all normalized (pure) states are points on its surface. The antipodal points on a bloch sphere represent orthogonal vectors. Hence $∣0⟩$ and $∣1⟩$ are orthogonal vectors. The radius of the Bloch sphere is of length 1. Each point on the surface of the Bloch sphere is a unique quantum state.
 
-The angles used in the Bloch sphere are twice as big as in the Hilbert space. For example, in the Hilbert space, the z-axis basis states |0> and |1> are orthogonal (the angle is π/2=90°), but in the Bloch sphere the angle between states ∣0⟩ and ∣1⟩ is π = 180° (z-axis).
+The angles used in the Bloch sphere are twice as big as in the Hilbert space. For example, in the Hilbert space, the z-axis basis states $∣0⟩$ and $∣1⟩$ are orthogonal (the angle is $\pi/2 = 90°$), but in the Bloch sphere the angle between states $∣0⟩$ and $∣1⟩$ is 
+$\pi = 180°$ (z-axis).
 
-The coordinates of a state |ψ⟩ are given by the Bloch vector r in spherical coordinates as the colatitude with respect to the z-axis (parameter θ) and the longitude with respect to the x-axis (parameter φ). The specified point is obtained as in Equation \@ref(eq:bloch).
+The coordinates of a state $|\psi⟩$ are given by the Bloch vector r in spherical coordinates as the colatitude with respect to the z-axis (parameter $\theta$) and the longitude with respect to the x-axis (parameter $\phi$). The specified point is obtained as in Equation \@ref(eq:bloch).
 
 $$
 \begin{equation}
@@ -513,7 +514,7 @@ $$
 
 There are 6 important states on the Bloch Sphere. 2 on the X-axis, 2 on the Z-axis and 2 on the Y-axis.
 
-States in the z-axis are showed in Equation \@ref(eq:bspz), and they simply represent the ∣0⟩ and ∣1⟩ states.
+States in the z-axis are showed in Equation \@ref(eq:bspz), and they simply represent the $∣0⟩$ and $∣1⟩$ states.
 
 $$
 \begin{equation}
@@ -555,7 +556,7 @@ six_state(3)[[1]] |> str()
 six_state(4)[[1]] |> str()
 ```
 
-The states in the y-axis are ∣+i⟩ and ∣-i⟩. They are showed in Equation \@ref(eq:bspy).
+The states in the y-axis are $∣+i⟩$ and $∣-i⟩$. They are showed in Equation \@ref(eq:bspy).
 
 $$
 \begin{equation}
@@ -578,7 +579,7 @@ six_state(6)[[1]] |> str()
 
 The Pauli-X, Pauli-Y and Pauli-Z matrices, are fundamental operators in quantum mechanics and quantum computing. They are widely used for various quantum operations and calculations. 
 
-The eigenstates of the Pauli-X, Pauli-Y, and Pauli-Z matrices are the vectors that, when acted upon by the respective matrix, yield scalar multiples of themselves. In other words, they are the vectors that remain unchanged (up to a scalar factor) when operated on by these matrices. Mathematically, if A is a square matrix, x is the eigenvector of A and λ is the eigenvalue of A then Ax = λx.
+The eigenstates of the Pauli-X, Pauli-Y, and Pauli-Z matrices are the vectors that, when acted upon by the respective matrix, yield scalar multiples of themselves. In other words, they are the vectors that remain unchanged (up to a scalar factor) when operated on by these matrices. Mathematically, if A is a square matrix, x is the eigenvector of A and $\lambda$ is the eigenvalue of A then $Ax = \lambda x$.
 
 First, considering the Z-Gate matrix in Equation \@ref(eq:pauz), eigenstates and eigenvalues can be studied. 
 
@@ -606,7 +607,7 @@ $$
      1 \\ 
      0 \\ 
      \end{bmatrix} = ∣0⟩ \\
-     \therefore Z∣0⟩ = Ax = λx = (+1)∣0⟩ \\
+     \therefore Z∣0⟩ = Ax = \lambdax = (+1)∣0⟩ \\
          Z∣1⟩ = \begin{bmatrix} 
      1 &  0 \\ 
      0 & -1 \\ 
@@ -620,11 +621,11 @@ $$
      0 \\ 
      1 \\ 
      \end{bmatrix} = -∣1⟩ \\
-     \therefore Z∣1⟩ = Ax = λx = (-1)∣1⟩
+     \therefore Z∣1⟩ = Ax = \lambda x = (-1)∣1⟩
      (\#eq:eigz)
 \end{equation}
 $$
-Hence +1 and -1 are the eigenvalues and ∣0⟩ and ∣1⟩ are the eigenvectors of the Pauli-Z matrix.
+Hence +1 and -1 are the eigenvalues and $∣0⟩$ and $∣1⟩$ are the eigenvectors of the Pauli-Z matrix.
 
 In `qsimulatR` the `Z` gate is specified with the `bit` argument set as an integer, the bit to which to apply the gate. Working with `qstate` objects eigenvalues are found.
 
@@ -658,7 +659,7 @@ $$
      1 \\ 
      1 \\ 
      \end{bmatrix} = ∣+⟩ \\
-     \therefore X∣+⟩ = Ax = λx = (+1)∣+⟩ \\
+     \therefore X∣+⟩ = Ax = \lambda x = (+1)∣+⟩ \\
          X∣-⟩ = \begin{bmatrix} 
      0 & 1 \\ 
      1 & 0 \\ 
@@ -672,11 +673,11 @@ $$
       1 \\ 
      -1 \\ 
      \end{bmatrix} = -∣-⟩ \\
-     \therefore X∣-⟩ = Ax = λx = (-1)∣-⟩
+     \therefore X∣-⟩ = Ax = \lambda x = (-1)∣-⟩
      (\#eq:eigx)
 \end{equation}
 $$
-So for the Pauli-X matrix, +1 and -1 are the eigenvalues and ∣+⟩ and ∣-⟩ are the eigenvectors.
+So for the Pauli-X matrix, +1 and -1 are the eigenvalues and $∣+⟩$ and $∣-⟩$ are the eigenvectors.
 
 In `qsimulatR` the `X` gate is available for working with Pauli-X gate.
 
@@ -696,7 +697,7 @@ $$
      (\#eq:pauy)
 \end{equation}
 $$
-The values +1 and -1 are the eigenvalues and ∣i⟩ and ∣-i⟩ are the eigenvectors of the Pauli-Y matrix.
+The values +1 and -1 are the eigenvalues and $∣i⟩$ and $∣-i⟩$ are the eigenvectors of the Pauli-Y matrix.
 
 $$
 \begin{equation}
@@ -713,7 +714,7 @@ $$
      -1 \\ 
      -i \\ 
      \end{bmatrix} = -∣i⟩ \\
-     \therefore Y∣i⟩ = Ax = λx = (-1)∣i⟩ \\
+     \therefore Y∣i⟩ = Ax = \lambda x = (-1)∣i⟩ \\
          Y∣-i⟩ = \begin{bmatrix} 
      0 & i \\ 
      -i &  0 \\  
@@ -721,7 +722,7 @@ $$
       1 \\ 
      -i \\ 
      \end{bmatrix}\Bigg) = \frac{1}{\sqrt{2}} \begin{bmatrix} 
-     -i² \\ 
+     -i^2 \\ 
      -i \\ 
      \end{bmatrix} = \frac{1}{\sqrt{2}} \begin{bmatrix} 
      1 \\ 
@@ -730,7 +731,7 @@ $$
       1 \\ 
      -i \\ 
      \end{bmatrix} = ∣-i⟩ \\
-     \therefore Y∣-i⟩ = Ax = λx = (+1)∣-i⟩
+     \therefore Y∣-i⟩ = Ax = \lambda x = (+1)∣-i⟩
      (\#eq:eigy)
 \end{equation}
 $$
@@ -891,7 +892,7 @@ bray_iplus %*% six_state(6)[[1]]@coefs
 bray_iminus %*% six_state(5)[[1]]@coefs
 ```
 
-To calculate the coordinates of the states on the Bloch sphere, the mathematical property known as the Expected Value of an Observable is considered. An observable is an operator which acts on a quantum state to give its eigenvalue and the state changes to the eigenstate. If |Ψ> is a quantum state and M is the observable then the average value or the expected value of the observable is given by <M> = <Ψ|M|Ψ>. It can also be used to calculate the coordinates of the Bloch Sphere.
+To calculate the coordinates of the states on the Bloch sphere, the mathematical property known as the Expected Value of an Observable is considered. An observable is an operator which acts on a quantum state to give its eigenvalue and the state changes to the eigenstate. If |Ψ> is a quantum state and M is the observable then the average value or the expected value of the observable is given by $<M> = <\psi|M|\psi>$. It can also be used to calculate the coordinates of the Bloch Sphere.
 
 To begin with, the states on the z-axis are given by Equation \@ref(eq:staz).
 
@@ -974,7 +975,7 @@ Z(1)*six_state(1)[[1]]
 Z(1)*six_state(2)[[1]]
 ```
 
-So, the coordinates of states ∣0⟩ and ∣1⟩ in z-axis are given by Equation \@ref(eq:zsta)
+So, the coordinates of states $∣0⟩$ and $∣1⟩$ in z-axis are given by Equation \@ref(eq:zsta)
 
 
 $$
@@ -1077,7 +1078,7 @@ Z(1)*six_state(3)[[1]]
 Z(1)*six_state(4)[[1]]
 ```
 
-And the coordinates of states ∣+⟩ and ∣-⟩ in x-axis are given by Equation \@ref(eq:xsta).
+And the coordinates of states $∣+⟩$ and $∣-⟩$ in x-axis are given by Equation \@ref(eq:xsta).
 
 
 $$
@@ -1195,7 +1196,7 @@ Z(1)*six_state(5)[[1]]
 Z(1)*six_state(6)[[1]]
 ```
 
-Finally, the coordinates of states ∣i⟩ and ∣-i⟩ in y-axis are given by Equation \@ref(eq:ysta).
+Finally, the coordinates of states $∣i⟩$ and $∣-i⟩$ in y-axis are given by Equation \@ref(eq:ysta).
 
 
 $$
@@ -1253,7 +1254,7 @@ Quantum gates are unitary transformations that act on qubits, changing their sta
 
 ### Pauli-X Gate (Bit Flip):
 
-The Pauli-X gate corresponds to a classical NOT operation, flipping the computational basis states |0⟩ and |1⟩. Its matrix representation is a Pauli-X matrix.
+The Pauli-X gate corresponds to a classical NOT operation, flipping the computational basis states $|0⟩$ and $|1⟩$. Its matrix representation is a Pauli-X matrix.
 
 ```{r xmat}
 X(1)@M
@@ -1267,7 +1268,7 @@ The action of the X gate is visualized using the `plot` function:
 
 ### Pauli-Y Gate (Bit & Phase Flip):
 
-The Pauli-Y gate combines a bit flip and a phase flip, interchanging |0⟩ and |1⟩ and applying a relative phase. Its matrix representation:
+The Pauli-Y gate combines a bit flip and a phase flip, interchanging $|0⟩$ and $|1⟩$ and applying a relative phase. Its matrix representation:
 
 ```{r ymat}
 Y(1)@M
@@ -1281,7 +1282,7 @@ For visualization:
 
 ### Pauli-Z Gate (Phase Flip):
 
-The Pauli-Z gate flips the phase of the |1⟩ state relative to |0⟩ in the computational basis. Matrix representation:
+The Pauli-Z gate flips the phase of the $|1⟩$ state relative to $|0⟩$ in the computational basis. Matrix representation:
 
 ```{r zmat}
 Z(1)@M
@@ -1310,7 +1311,7 @@ Visualization of the action of the Hadamard gate is inherited from the `plot` me
 
 ### Other Quantum Gates
 
-- S Gate (Phase Gate Z90): Adds a 90° rotation to the phase, useful in phase manipulation.
+- S Gate (Phase Gate Z90): Adds a $90°$ rotation to the phase, useful in phase manipulation.
 - T Gate (Phase Gate): Performs a quarter of the Z gate and a half of the S gate, providing additional phase control.
 
 Visualization of the action of the S gate using the plot function:
