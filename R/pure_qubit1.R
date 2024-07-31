@@ -1,7 +1,7 @@
 #' Create a normalized pure quantum state for a 1-qubit system.
 #'
-#' @param theta The parameter θ in radians, where θ ∈ 0, π.
-#' @param phi The parameter ϕ in radians, where ϕ ∈ 0, 2π.
+#' @param theta The parameter theta in radians.
+#' @param phi The parameter phi in radians.
 #' @param spherical Whether to return coordinates in spherical form (default is FALSE).
 #
 #' @return A qstate object representing the normalized pure quantum state for a 1-qubit system.

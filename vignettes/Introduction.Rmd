@@ -279,11 +279,11 @@ $$
 \end{equation}
 $$
 
-Here $|\psi⟩$ represents the quantum state of the n-qubit system, $x_1, x_2,...,x_n$ are the individual qubit states, where each $x_i$ can be either 0 or 1. The coefficients $α_{x_1x_2...x_n}$ are the complex coefficients or amplitudes associated with each computational basis state ∣$x_1x_2...x_n$⟩, where the sum is taken over all possible combinations of $x_1, x_2,..., x_n$, which gives the superposition of all basis states.
+Here $|\psi⟩$ represents the quantum state of the n-qubit system, $x_1, x_2,...,x_n$ are the individual qubit states, where each $x_i$ can be either 0 or 1. The coefficients $\alpha_{x_1x_2...x_n}$ are the complex coefficients or amplitudes associated with each computational basis state ∣$x_1x_2...x_n$⟩, where the sum is taken over all possible combinations of $x_1, x_2,..., x_n$, which gives the superposition of all basis states.
 
 The generalization in Equation \@ref(eq:purn) maintains the concept of superposition, where the quantum state is a linear combination of all possible computational basis states. However, in higher dimensions (more qubits), the number of terms in the superposition and the complexity of the state increase exponentially, showcasing the power of quantum computing in handling vast amounts of information simultaneously.
 
-The complex coefficients $α_{x_1x_2...x_n}$ can be expressed in terms of trigonometric functions, similar to how states get represented on the Bloch sphere for the single qubit case of Equation \@ref(eq:pur1).
+The complex coefficients $\alpha_{x_1x_2...x_n}$ can be expressed in terms of trigonometric functions, similar to how states get represented on the Bloch sphere for the single qubit case of Equation \@ref(eq:pur1).
 
 For a single qubit system, the complex coefficients can be written in the form of Equation \@ref(eq:cff1).
 
@@ -317,7 +317,7 @@ $$
     (\#eq:pu11)
 \end{equation}
 $$
-Where $\alpha_0$ and $\alpha_1$ are complex coefficients as in Equation \@ref(eq:cff1), and $∣0⟩$ and $∣1⟩$ are the basis states of the qubit system. Both $\alpha_0$ and $\alpha_1$ involve trigonometric functions and exponentials. Trigonometric functions like cosine and sine can generate complex numbers, especially when combined with phases in the form of $e^{i\phi}$. Since $\alpha_0$ and $\alpha_1$ are combinations of such functions, they are indeed complex numbers.
+Where $\alpha_0$ and $\alpha_1$ are complex coefficients as in Equation \@ref(eq:cff1), and $∣0⟩$ and $∣1⟩$ are the basis states of the qubit system. Both $\alpha_0$ and $\alpha_1$ involve trigonometric functions and exponentials. Trigonometric functions like cosine and sine can generate complex numbers, especially when combined with phases in the form of $e^{i \phi}$. Since $\alpha_0$ and $\alpha_1$ are combinations of such functions, they are indeed complex numbers.
 
 The normalization condition for a quantum state is that the sum of the squared magnitudes of the coefficients must equal 1. Mathematically, this is expressed as Equation \@ref(eq:norm), where, substituing the expressions for $\alpha_0$ and $\alpha_1$ and simplifying to verify normalization results in Equation \@ref(eq:nr11).
 
@@ -408,7 +408,7 @@ And therefore, combining the terms $∣\alpha|^2 + ∣\beta|^2 + ∣\gamma|^2+ |
 
 It's been proven that the coefficients $\alpha_{00}$, $\alpha_{01}$, $\alpha_{10}$, and $\alpha_{11}$ are complex numbers and satisfy the normalization condition, defining a valid quantum state in the 2-dimensional case.
 
-The previous results follow from the property that ∣$e^{i\phi}$∣ = 1 for any real value of ϕ and from the fact that the absolute value of a complex number z = a + bi is given by ∣z∣= $\sqrt{a^2 + b^2}$. Then, z = $e^{i\phi_1} = \cos{\phi_1} + i\sin{\phi_1}$. Computing the absolute gives $|e^{i\phi_1}∣= |\sqrt{\cos^2{\phi_1} + \sin^2{\phi_1}}| = \sqrt{1} = 1$.
+The previous results follow from the property that ∣$e^{i\phi}$∣ = 1 for any real value of $\phi$ and from the fact that the absolute value of a complex number $z = a + bi$ is given by $∣z∣ = \sqrt{a^2 + b^2}$. Then, $z = e^{i\phi_1} = \cos{\phi_1} + i\sin{\phi_1}$. Computing the absolute gives $|e^{i\phi_1}∣= |\sqrt{\cos^2{\phi_1} + \sin^2{\phi_1}}| = \sqrt{1} = 1$.
 
 The trigonometric identity $\cos^2{\phi} + \sin^2{\phi} = 1$ holds for any real number $\phi$, which means that the absolute value of $e^{i\phi_1}$ is always 1 regardless of the value of $\phi_1$. Hence, ∣$e^{i\phi_1}$∣ = 1 for any real $\phi_1$.
 
@@ -426,7 +426,7 @@ The complex vectors as normalized pure quantum states in terms of their paramete
 
 These parameters help describe the state of each quantum system in terms of its orientation on the Bloch sphere, where $\theta$ determines the probability amplitudes of measuring the state in the computational basis, and $\theta$ represents the relative phase between basis states.
 
-To visualize the quantum states represented by the complex vectors on the Bloch sphere, for a given state $|ψ_i⟩$, the coordinates of the state are converted to spherical coordinates with given $\theta_i$ and $\phi_i$. Then a point on the Bloch sphere corresponding to these coordinates is plotted.
+To visualize the quantum states represented by the complex vectors on the Bloch sphere, for a given state $|\psi_i⟩$, the coordinates of the state are converted to spherical coordinates with given $\theta_i$ and $\phi_i$. Then a point on the Bloch sphere corresponding to these coordinates is plotted.
 
 The `pure_qubit1` function in `qvirus` creates a normalized pure quantum state for a 1-qubit system   
 
@@ -479,7 +479,7 @@ In quantum mechanics, when a quantum system is measured, its superposition colla
 
 The Born rule states that when measuring a quantum state, each classical state has a probability of being the measurement outcome. This probability is determined by the squared absolute value of the component in the quantum state vector corresponding to that classical state.
 
-Considering the quantum state ∣ψ⟩ of the illustration example in Equation \@ref(eq:spsi) with complex amplitudes $\alpha = \frac{1+2i}{3}$ and $\beta = -\frac{2}{3}$. The probability of measuring classical state is calculated as $Prob(0) = ∣\alpha∣^2 = ∣\frac{1+2i}{3}∣^2 = \frac{5}{9}$ and classical state 1 is obtained as $Prob(1) = ∣\beta∣^2 = ∣−\frac{2}{3}∣^2 = \frac{4}{9}$, therefore, these probabilities satisfy the condition that the sum of the squared absolute values of the components in the quantum state vector equals 1.
+Considering the quantum state $∣\psi⟩$ of the illustration example in Equation \@ref(eq:spsi) with complex amplitudes $\alpha = \frac{1+2i}{3}$ and $\beta = -\frac{2}{3}$. The probability of measuring classical state is calculated as $Prob(0) = ∣\alpha∣^2 = ∣\frac{1+2i}{3}∣^2 = \frac{5}{9}$ and classical state 1 is obtained as $Prob(1) = ∣\beta∣^2 = ∣−\frac{2}{3}∣^2 = \frac{4}{9}$, therefore, these probabilities satisfy the condition that the sum of the squared absolute values of the components in the quantum state vector equals 1.
 
 By setting the boolean argument `probs = TRUE` in the `normalize_check` function, the probabilities of being in classical states 0 and 1 for a given quantum state object $∣\psi⟩$ with normalized coefficients are obtained.
 
@@ -487,14 +487,14 @@ By setting the boolean argument `probs = TRUE` in the `normalize_check` function
 normalize_check(psi, probs = TRUE)
 ```
 
-Here, the output represents the probabilities of measuring classical states 0 and 1, indicating a 55.56% chance of measuring state 0 and a 44.44% chance of measuring state 1.
+Here, the output represents the probabilities of measuring classical states 0 and 1, indicating a 55.56% chance of measuring state 0 and a $44.44\%$ chance of measuring state 1.
 
 This demonstrates how quantum measurements yield probabilistic outcomes based on the components of the quantum state vector, bridging the quantum and classical worlds in a probabilistic manner.
 
 
 # Bloch Sphere
 
-In quantum mechanics, the Bloch sphere is a geometric representation of the pure satate space of a 2-level quantum mechanical system. The Bloch sphere helps in the understanding of the geometric interpretation of unitary operations or gates performed on qubits.
+In quantum mechanics, the Bloch sphere is a geometric representation of the pure state space of a 2-level quantum mechanical system. The Bloch sphere helps in the understanding of the geometric interpretation of unitary operations or gates performed on qubits.
 
 From the normalized (pure) quantum state representation of Equation \@ref(eq:pur1) the angle $\theta \in [0, 2\pi]$ determines the probability to measure $∣0⟩$ or $∣1⟩$ states, and the angle $\phi \in [0, \pi]$ describes the relative phase. A relative phase is the difference between the phases of the coefficients of $∣0⟩$ and $∣1⟩$. Relative phase is the core of quantum computing. If there are 2 quantum states with different relative phases (i.e. 2 values of $\phi$) then both the qubit states are different.
 
@@ -607,7 +607,7 @@ $$
      1 \\ 
      0 \\ 
      \end{bmatrix} = ∣0⟩ \\
-     \therefore Z∣0⟩ = Ax = \lambdax = (+1)∣0⟩ \\
+     \therefore Z∣0⟩ = Ax = \lambda x = (+1)∣0⟩ \\
          Z∣1⟩ = \begin{bmatrix} 
      1 &  0 \\ 
      0 & -1 \\ 
@@ -892,7 +892,7 @@ bray_iplus %*% six_state(6)[[1]]@coefs
 bray_iminus %*% six_state(5)[[1]]@coefs
 ```
 
-To calculate the coordinates of the states on the Bloch sphere, the mathematical property known as the Expected Value of an Observable is considered. An observable is an operator which acts on a quantum state to give its eigenvalue and the state changes to the eigenstate. If |Ψ> is a quantum state and M is the observable then the average value or the expected value of the observable is given by $<M> = <\psi|M|\psi>$. It can also be used to calculate the coordinates of the Bloch Sphere.
+To calculate the coordinates of the states on the Bloch sphere, the mathematical property known as the Expected Value of an Observable is considered. An observable is an operator which acts on a quantum state to give its eigenvalue and the state changes to the eigenstate. If $|psi>$ is a quantum state and M is the observable then the average value or the expected value of the observable is given by $<M> = <\psi|M|\psi>$. It can also be used to calculate the coordinates of the Bloch Sphere.
 
 To begin with, the states on the z-axis are given by Equation \@ref(eq:staz).
 

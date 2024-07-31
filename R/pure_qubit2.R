@@ -1,9 +1,9 @@
 #' Create a normalized pure quantum state for a 2-qubit system.
 #'
-#' @param theta1 The parameter θ1 in radians for the first qubit, where θ1 ∈ 0, π.
-#' @param theta2 The parameter θ2 in radians for the second qubit, where θ2 ∈ 0, π.
-#' @param phi1 The phase parameter ϕ1 in radians for the first qubit, where ϕ1 ∈ 0, 2π.
-#' @param phi2 The phase parameter ϕ2 in radians for the second qubit, where ϕ2 ∈ 0, 2π.
+#' @param theta1 The parameter theta1 in radians for the first qubit.
+#' @param theta2 The parameter theta2 in radians for the second qubit.
+#' @param phi1 The phase parameter phi1 in radians for the first qubit.
+#' @param phi2 The phase parameter phi2 in radians for the second qubit.
 #'
 #' @return A qstate object representing the normalized pure quantum state for a 2-qubit system.
 #' @export

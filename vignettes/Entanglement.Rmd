@@ -246,7 +246,7 @@ x2 <- qstate(1, coefs = as.complex(c(0.38, 0.92)))
 simulate_entanglement(x1, x2, iterations = 2, angle = pi/4)
 ```
 
-Thus, the probability of ($|x2> = |0>$) increased from 0.15 to 0.47, the probability of ($|x2> = |1>$) decreased from 0.85 to 0.53. The (unchanged) probability of ($|x1> = |1>$) = 0.36 < 0.5 thus, $|x1>$ is closer to state $|0>$. This means that applying the CNOT several times, with $x1$ as the control bit and $x2$ as the target bit, will make $|x2>$ to converge to state $|0>$ as well, therefore entanglement.
+Thus, the probability of ($|x2> = |0>$) increased from 0.15 to 0.47, the probability of ($|x2> = |1>$) decreased from 0.85 to 0.53. The (unchanged) probability of ($|x1> = |1>$)  $0.36 < 0.5$ thus, $|x1>$ is closer to state $|0>$. This means that applying the CNOT several times, with $x1$ as the control bit and $x2$ as the target bit, will make $|x2>$ to converge to state $|0>$ as well, therefore entanglement.
 
 # Harnessing Entanglement for Quantum Computing
 
@@ -405,7 +405,7 @@ These superposition states are crucial for quantum computations because they all
 
 Entanglement typically involves multiple qubits. For example, considering a system of two qubits initially in the state $|00⟩$, where both qubits are in the zero state. To create an entangled state, a series of gates that involve H gates along with other gates like CNOT gate are applied.
     
-For instance, applying a Hadamard gate to the qubit of Equation \@ref(eq:hen1) followed by a CNOT gate (controlled by the first qubit and targeting the second qubit) creates the Bell state $|\phi+⟩$, as in Equation \@ref(eq:hen3).
+For instance, applying a Hadamard gate to the qubit of Equation \@ref(eq:hen1) followed by a CNOT gate (controlled by the first qubit and targeting the second qubit) creates the Bell state $|\phi +⟩$, as in Equation \@ref(eq:hen3).
 
 $$
 \begin{equation}
@@ -491,7 +491,7 @@ as.numeric(probs[1]+probs[3])
 as.numeric(probs[2]+probs[4])
 ```
 
-As before, an updated `Protein_State` with updated probabilities is formed, and its coefficients are computed knowing that coef = $\sqrt{prob}$.
+As before, an updated `Protein_State` with updated probabilities is formed, and its coefficients are computed knowing that $\text{coef} = \sqrt{prob}$.
 
 ```{r avp4, eval=FALSE, echo=FALSE}
 # Updated Protein_State
