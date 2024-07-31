@@ -7,9 +7,9 @@
 pure_qubit1(theta, phi, spherical = FALSE)
 }
 \arguments{
-\item{theta}{The parameter θ in radians, where θ ∈ 0, π.}
+\item{theta}{The parameter theta in radians.}
 
-\item{phi}{The parameter ϕ in radians, where ϕ ∈ 0, 2π.}
+\item{phi}{The parameter phi in radians.}
 
 \item{spherical}{Whether to return coordinates in spherical form (default is FALSE).}
 }

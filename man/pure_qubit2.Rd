@@ -7,13 +7,13 @@
 pure_qubit2(theta1, theta2, phi1, phi2)
 }
 \arguments{
-\item{theta1}{The parameter θ1 in radians for the first qubit, where θ1 ∈ 0, π.}
+\item{theta1}{The parameter theta1 in radians for the first qubit.}
 
-\item{theta2}{The parameter θ2 in radians for the second qubit, where θ2 ∈ 0, π.}
+\item{theta2}{The parameter theta2 in radians for the second qubit.}
 
-\item{phi1}{The phase parameter ϕ1 in radians for the first qubit, where ϕ1 ∈ 0, 2π.}
+\item{phi1}{The phase parameter phi1 in radians for the first qubit.}
 
-\item{phi2}{The phase parameter ϕ2 in radians for the second qubit, where ϕ2 ∈ 0, 2π.}
+\item{phi2}{The phase parameter phi2 in radians for the second qubit.}
 }
 \value{
 A qstate object representing the normalized pure quantum state for a 2-qubit system.

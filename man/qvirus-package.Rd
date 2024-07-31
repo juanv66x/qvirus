@@ -4,9 +4,17 @@
 \name{qvirus-package}
 \alias{qvirus}
 \alias{qvirus-package}
-\title{qvirus: Quantum Computing for HIV Drug Design}
+\title{qvirus: Quantum Computing for Analyzing CD4 Lymphocytes and Antiretroviral Therapy}
 \description{
-Resources, tutorials, and code snippets dedicated to exploring the intersection of quantum computing and artificial intelligence (AI) in the context of HIV drug design. With the emergence of quantum artificial intelligence (QAI) and the development of small-scale quantum computers, there's an unprecedented opportunity to revolutionize the way antiretroviral therapy design for HIV is approached. This repository serves as a platform to discuss, develop, and share insights into leveraging quantum computing techniques, particularly through the use of Qiskit and R programming, to address the challenges in designing effective inhibitors of HIV protease enzymes.
+Resources, tutorials, and code snippets dedicated to exploring the intersection of quantum computing and artificial intelligence (AI) in the context of analyzing Cluster of Differentiation 4 (CD4) lymphocytes and optimizing antiretroviral therapy (ART) for human immunodeficiency virus (HIV). With the emergence of quantum artificial intelligence and the development of small-scale quantum computers, there's an unprecedented opportunity to revolutionize the understanding of HIV dynamics and treatment strategies. This project serves as a platform to discuss, develop, and share insights into leveraging quantum computing techniques to address the challenges in studying the behavior of CD4 lymphocytes and enhancing the efficacy of ART.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/juanv66x/qvirus}
+  \item Report bugs at \url{https://github.com/juanv66x/qvirus/issues}
+}
+
 }
 \author{
 \strong{Maintainer}: Juan Pablo Acuña González \email{acua6307@gmail.com} (\href{https://orcid.org/0009-0003-6029-6560}{ORCID})
