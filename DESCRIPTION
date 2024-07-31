@@ -1,10 +1,10 @@
 Package: qvirus
-Title: Quantum Computing for HIV Drug Design  
+Title: Quantum Computing for Analyzing CD4+ Lymphocytes and Antiretroviral Therapy  
 Version: 0.0.0.9000
 Authors@R: 
     person("Juan Pablo", "Acuña González", , "acua6307@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0009-0003-6029-6560"))
-Description: Resources, tutorials, and code snippets dedicated to exploring the intersection of quantum computing and artificial intelligence (AI) in the context of HIV drug design. With the emergence of quantum artificial intelligence (QAI) and the development of small-scale quantum computers, there's an unprecedented opportunity to revolutionize the way antiretroviral therapy design for HIV is approached. This repository serves as a platform to discuss, develop, and share insights into leveraging quantum computing techniques, particularly through the use of Qiskit and R programming, to address the challenges in designing effective inhibitors of HIV protease enzymes.
+Description: Resources, tutorials, and code snippets dedicated to exploring the intersection of quantum computing and artificial intelligence (AI) in the context of analyzing CD4 (Cluster of Differentiation 4) lymphocytes and optimizing antiretroviral therapy (ART) for human immunodeficiency virus (HIV). With the emergence of quantum artificial intelligence (QAI) and the development of small-scale quantum computers, there's an unprecedented opportunity to revolutionize the understanding of HIV dynamics and treatment strategies. This project serves as a platform to discuss, develop, and share insights into leveraging quantum computing techniques to address the challenges in studying the behavior of CD4 lymphocytes and enhancing the efficacy of ART.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
