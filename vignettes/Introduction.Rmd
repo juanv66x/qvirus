@@ -896,9 +896,6 @@ To calculate the coordinates of the states on the Bloch sphere, the mathematical
 
 To begin with, the states on the z-axis are given by Equation \@ref(eq:staz).
 
-
-
-
 $$ 
 \begin{equation}
     X∣0⟩ = \begin{bmatrix} 
