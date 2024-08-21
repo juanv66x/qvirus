@@ -4,7 +4,7 @@
 \alias{simulate_entanglement}
 \title{Simulate Entanglement Evolution}
 \usage{
-simulate_entanglement(x1, x2, iterations, angle)
+simulate_entanglement(x1, x2, iterations, angle, verbose = FALSE)
 }
 \arguments{
 \item{x1}{Quantum state for qubit 1, represented as a qstate object.}
@@ -14,9 +14,11 @@ simulate_entanglement(x1, x2, iterations, angle)
 \item{iterations}{Number of iterations for the entanglement process.}
 
 \item{angle}{Rotation angle for applying Rx gate.}
+
+\item{verbose}{If TRUE, prints detailed information to the console.}
 }
 \value{
-A list containing the entangled quantum state x2 after each iteration.
+A list containing the entangled quantum state x2 after each iteration and other relevant information.
 }
 \description{
 This function simulates the evolution of entanglement between two quantum states x1 and x2 using the CNOT gate.
@@ -26,5 +28,6 @@ library(qsimulatR)
 library(qvirus)
 x1 <- qstate(1, coefs = as.complex(c(0.8, 0.6)))
 x2 <- qstate(1, coefs = as.complex(c(0.38, 0.92)))
-simulate_entanglement(x1, x2, iterations = 3, angle = pi/4)
+results <- simulate_entanglement(x1, x2, iterations = 3, angle = pi/4, verbose = TRUE)
+print(results)
 }

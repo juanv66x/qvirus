@@ -6,7 +6,7 @@
 \alias{qvirus-package}
 \title{qvirus: Quantum Computing for Analyzing CD4 Lymphocytes and Antiretroviral Therapy}
 \description{
-Resources, tutorials, and code snippets dedicated to exploring the intersection of quantum computing and artificial intelligence (AI) in the context of analyzing Cluster of Differentiation 4 (CD4) lymphocytes and optimizing antiretroviral therapy (ART) for human immunodeficiency virus (HIV). With the emergence of quantum artificial intelligence and the development of small-scale quantum computers, there's an unprecedented opportunity to revolutionize the understanding of HIV dynamics and treatment strategies. This project serves as a platform to discuss, develop, and share insights into leveraging quantum computing techniques to address the challenges in studying the behavior of CD4 lymphocytes and enhancing the efficacy of ART.
+Resources, tutorials, and code snippets dedicated to exploring the intersection of quantum computing and artificial intelligence (AI) in the context of analyzing Cluster of Differentiation 4 (CD4) lymphocytes and optimizing antiretroviral therapy (ART) for human immunodeficiency virus (HIV). With the emergence of quantum artificial intelligence and the development of small-scale quantum computers, there's an unprecedented opportunity to revolutionize the understanding of HIV dynamics and treatment strategies. This project leverages the R package 'qsimulatR' (Ostmeyer and Urbach, 2023, \url{https://CRAN.R-project.org/package=qsimulatR}), a quantum computer simulator, to explore these applications in quantum computing techniques, addressing the challenges in studying CD4 lymphocytes and enhancing ART efficacy.
 }
 \seealso{
 Useful links:
