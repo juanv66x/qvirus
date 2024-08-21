@@ -29,7 +29,7 @@
 #' 
 #' @references
 #' Özlüer Başer, B. (2022). "Analyzing the competition of HIV-1 phenotypes with quantum game theory". 
-#' Gazi University Journal of Science, 35(3), 1190--1198. <https://doi.org/10.35096/gumus.1002827>
+#' Gazi University Journal of Science, 35(3), 1190--1198. <https://doi.org/10.35378/gujs.772616>
 phen_hiv <- function(strategy1, strategy2, alpha, beta, gamma, theta) {
   # Define the quantum gates
   I <- diag(2)

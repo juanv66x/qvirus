@@ -43,5 +43,5 @@ print(result)
 }
 \references{
 Özlüer Başer, B. (2022). "Analyzing the competition of HIV-1 phenotypes with quantum game theory".
-Gazi University Journal of Science, 35(3), 1190--1198. \url{https://doi.org/10.35096/gumus.1002827}
+Gazi University Journal of Science, 35(3), 1190--1198. \url{https://doi.org/10.35378/gujs.772616}
 }
