@@ -8,11 +8,23 @@
 A data frame with 176 rows and 18 variables:
 \describe{
 \item{ID}{Unique identifier for each patient.}
-\item{vl_2018_1 to vl_2024_3}{Viral load measurements taken at various
-points in time between 2018 and 2024. The naming structure represents the
-year of the measurement (e.g., 2018, 2019, etc.), and the point in time
-within the year (1, 2, or 3). Units are in copies of HIV RNA per milliliter
-of blood.}
+\item{vl_2018_1}{Viral load for the first measurement in 2018.}
+\item{vl_2018_2}{Viral load for the second measurement in 2018.}
+\item{vl_2019_1}{Viral load for the first measurement in 2019.}
+\item{vl_2019_2}{Viral load for the second measurement in 2019.}
+\item{vl_2020_1}{Viral load for the first measurement in 2020.}
+\item{vl_2021_1}{Viral load for the first measurement in 2021.}
+\item{vl_2021_2}{Viral load for the second measurement in 2021.}
+\item{vl_2021_3}{Viral load for the third measurement in 2021.}
+\item{vl_2022_1}{Viral load for the first measurement in 2022.}
+\item{vl_2022_2}{Viral load for the second measurement in 2022.}
+\item{vl_2022_3}{Viral load for the third measurement in 2022.}
+\item{vl_2023_1}{Viral load for the first measurement in 2023.}
+\item{vl_2023_2}{Viral load for the second measurement in 2023.}
+\item{vl_2023_3}{Viral load for the third measurement in 2023.}
+\item{vl_2024_1}{Viral load for the first measurement in 2024.}
+\item{vl_2024_2}{Viral load for the second measurement in 2024.}
+\item{vl_2024_3}{Viral load for the third measurement in 2024.}
 }
 }
 \source{

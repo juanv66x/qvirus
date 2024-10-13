@@ -10,10 +10,23 @@
 #' @format A data frame with 176 rows and 18 variables:
 #' \describe{
 #'   \item{ID}{Unique identifier for each patient.}
-#'   \item{cd_2018_1 to cd_2024_3}{Longitudinal CD4 lymphocyte count 
-#'   measurements. The naming convention follows the year (from 2018 to 2024) 
-#'   and the measurement period within the year (1, 2, or 3). Values are 
-#'   recorded in cells per micro liter of blood.}
+#'   \item{cd_2018_1}{CD4 count for the first measurement in 2018.}
+#'   \item{cd_2018_2}{CD4 count for the second measurement in 2018.}
+#'   \item{cd_2019_1}{CD4 count for the first measurement in 2019.}
+#'   \item{cd_2019_2}{CD4 count for the second measurement in 2019.}
+#'   \item{cd_2020_1}{CD4 count for the first measurement in 2020.}
+#'   \item{cd_2021_1}{CD4 count for the first measurement in 2021.}
+#'   \item{cd_2021_2}{CD4 count for the second measurement in 2021.}
+#'   \item{cd_2021_3}{CD4 count for the third measurement in 2021.}
+#'   \item{cd_2022_1}{CD4 count for the first measurement in 2022.}
+#'   \item{cd_2022_2}{CD4 count for the second measurement in 2022.}
+#'   \item{cd_2022_3}{CD4 count for the third measurement in 2022.}
+#'   \item{cd_2023_1}{CD4 count for the first measurement in 2023.}
+#'   \item{cd_2023_2}{CD4 count for the second measurement in 2023.}
+#'   \item{cd_2023_3}{CD4 count for the third measurement in 2023.}
+#'   \item{cd_2024_1}{CD4 count for the first measurement in 2024.}
+#'   \item{cd_2024_2}{CD4 count for the second measurement in 2024.}
+#'   \item{cd_2024_3}{CD4 count for the third measurement in 2024.}
 #' }
 #'
 #' @details .
@@ -43,11 +56,23 @@
 #' @format A data frame with 176 rows and 18 variables:
 #' \describe{
 #'   \item{ID}{Unique identifier for each patient.}
-#'   \item{vl_2018_1 to vl_2024_3}{Viral load measurements taken at various 
-#'   points in time between 2018 and 2024. The naming structure represents the 
-#'   year of the measurement (e.g., 2018, 2019, etc.), and the point in time 
-#'   within the year (1, 2, or 3). Units are in copies of HIV RNA per milliliter 
-#'   of blood.}
+#'   \item{vl_2018_1}{Viral load for the first measurement in 2018.}
+#'   \item{vl_2018_2}{Viral load for the second measurement in 2018.}
+#'   \item{vl_2019_1}{Viral load for the first measurement in 2019.}
+#'   \item{vl_2019_2}{Viral load for the second measurement in 2019.}
+#'   \item{vl_2020_1}{Viral load for the first measurement in 2020.}
+#'   \item{vl_2021_1}{Viral load for the first measurement in 2021.}
+#'   \item{vl_2021_2}{Viral load for the second measurement in 2021.}
+#'   \item{vl_2021_3}{Viral load for the third measurement in 2021.}
+#'   \item{vl_2022_1}{Viral load for the first measurement in 2022.}
+#'   \item{vl_2022_2}{Viral load for the second measurement in 2022.}
+#'   \item{vl_2022_3}{Viral load for the third measurement in 2022.}
+#'   \item{vl_2023_1}{Viral load for the first measurement in 2023.}
+#'   \item{vl_2023_2}{Viral load for the second measurement in 2023.}
+#'   \item{vl_2023_3}{Viral load for the third measurement in 2023.}
+#'   \item{vl_2024_1}{Viral load for the first measurement in 2024.}
+#'   \item{vl_2024_2}{Viral load for the second measurement in 2024.}
+#'   \item{vl_2024_3}{Viral load for the third measurement in 2024.}
 #' }
 #'
 #' @details
