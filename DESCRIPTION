@@ -15,7 +15,8 @@ Suggests:
     qsimulatR,
     rmarkdown,
     testthat (>= 3.0.0),
-    vdiffr
+    vdiffr,
+    yardstick
 Config/testthat/edition: 3
 VignetteBuilder: knitr
 URL: https://github.com/juanv66x/qvirus
@@ -25,6 +26,7 @@ Depends:
 LazyData: true
 Imports: 
     dplyr,
+    factoextra,
     ggplot2,
     gridExtra,
     stats

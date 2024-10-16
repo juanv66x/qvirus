@@ -26,13 +26,13 @@ plot.interaction <- function(x, type = "all", ...) {
   create_plots <- function(data, title) {
     p1 <- ggplot2::ggplot(data, ggplot2::aes(x = value)) + 
       ggplot2::geom_histogram(bins = 30, fill = "blue", alpha = 0.7) + 
-      ggplot2::labs(title = paste(title, " - Histogram")) +
+      ggplot2::labs(title = paste(title)) +
       ggplot2::theme_minimal()
     
     p2 <- ggplot2::ggplot(data, ggplot2::aes(sample = value)) + 
       ggplot2::stat_qq() + 
       ggplot2::stat_qq_line(color = "red") + 
-      ggplot2::labs(title = paste(title, " - QQ plot")) +
+      ggplot2::labs(title = paste(title)) +
       ggplot2::theme_minimal()
     
     return(list(p1 = p1, p2 = p2))
@@ -46,11 +46,11 @@ plot.interaction <- function(x, type = "all", ...) {
   vlogs_diff_data <- data.frame(value = unlist(x$vlogs_diff)) # Changed object to x
   
   # Create individual plots for each type of difference
-  cd_diff_plots <- create_plots(cd_diff_data, "CD4 Differences (raw)")
-  cds_diff_plots <- create_plots(cds_diff_data, "CD4 Differences (standardized)")
-  vl_diff_plots <- create_plots(vl_diff_data, "Viral Load Differences (raw)")
-  vlog_diff_plots <- create_plots(vlog_diff_data, "Viral Load Differences (log-transformed)")
-  vlogs_diff_plots <- create_plots(vlogs_diff_data, "Viral Load Differences (log-standardized)")
+  cd_diff_plots <- create_plots(cd_diff_data, "CD4 (raw)")
+  cds_diff_plots <- create_plots(cds_diff_data, "CD4 (std)")
+  vl_diff_plots <- create_plots(vl_diff_data, "Viral Load (raw)")
+  vlog_diff_plots <- create_plots(vlog_diff_data, "Viral Load (log10)")
+  vlogs_diff_plots <- create_plots(vlogs_diff_data, "Viral Load (log10 std)")
   
   # Determine what to plot based on user input
   if (type == "cd_diff") {

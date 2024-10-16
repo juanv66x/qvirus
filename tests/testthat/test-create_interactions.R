@@ -3,7 +3,7 @@ test_that("`create_interactions()` works as expected", {
   data(vl_3)
   expect_snapshot(
     print(
-      create_interactions(cd_3, vl_3) 
+      create_interactions(cd_3[, -1], vl_3[, -1]) 
     )
   )
 })
