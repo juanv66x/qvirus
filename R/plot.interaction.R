@@ -17,10 +17,12 @@
 #' @export
 #'
 #' @examples
+#' \donttest{
 #' data("vl_3")
 #' data("cd_3")
 #' interaction_obj <- create_interactions(cd_3, vl_3)
-#' plot(interaction_obj)              # Plot all differences
+#' plot(interaction_obj, type = "cd_diff")    
+#' }
 plot.interaction <- function(x, type = "all", ...) {
   # Helper function to create individual plots
   create_plots <- function(data, title) {

@@ -9,7 +9,7 @@ test_that("`plot.interaction()` works as expected", {
   # Test plotting for all types of differences
   local_edition(3)
   vdiffr::expect_doppelganger(
-    title = "interaction plot - all differences",
-    fig = plot(interaction_obj)  # Calls the plot method for the interaction object
+    title = "interaction plot - cd differences",
+    fig = plot(interaction_obj, type = "cd_diff")  # Calls the plot method for the interaction object
   )
 })

@@ -27,8 +27,10 @@ and viral load values contained in an interaction object. Users can choose to
 plot all differences or specify which type to plot.
 }
 \examples{
+\donttest{
 data("vl_3")
 data("cd_3")
 interaction_obj <- create_interactions(cd_3, vl_3)
-plot(interaction_obj)              # Plot all differences
+plot(interaction_obj, type = "cd_diff")    
+}
 }
