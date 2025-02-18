@@ -15,7 +15,6 @@ Suggests:
     earth,
     kknn,
     knitr,
-    qsimulatR,
     rmarkdown,
     rules,
     testthat (>= 3.0.0),
@@ -34,4 +33,5 @@ Imports:
     factoextra,
     ggplot2,
     gridExtra,
+    qsimulatR,
     stats
